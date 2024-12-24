@@ -1,19 +1,16 @@
+// src/components/Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
+  return (
+    <div>
+      <nav className="nav nav-pills flex-column flex-sm-row justify-content-center">
+        <div className="col-12 text-center">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/contact" className="nav-link">Get Help Now</Link>
+        </div>
+      </nav>
+    </div>
+  );
 };
