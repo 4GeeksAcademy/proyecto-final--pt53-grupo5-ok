@@ -1,39 +1,46 @@
-// src/front/js/store/appContext.js
-import React, { createContext, useState, useEffect } from 'react';
-import backendURL from '../components/backendURL';
+import React, { useState, useEffect } from "react";
+import getState from "./flux.js";
 
-export const Context = createContext();
+// Don't change, here is where we initialize our context, by default it's just going to be null.
+export const Context = React.createContext(null);
 
-const AppContextProvider = ({ children }) => {
-  const [store, setStore] = useState({
-    demo: [
-      { title: "First item", background: "white", initial: "blue" },
-      { title: "Second item", background: "white", initial: "red" }
-    ]
-  });
+// This function injects the global store to any view/component where you want to use it, we will inject the context to layout.js, you can see it here:
+// https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/js/layout.js#L35
+const injectContext = PassedComponent => {
+	const StoreWrapper = props => {
+		//this will be passed as the contenxt value
+		const [state, setState] = useState(
+			getState({
+				getStore: () => state.store,
+				getActions: () => state.actions,
+				setStore: updatedStore =>
+					setState({
+						store: Object.assign(state.store, updatedStore),
+						actions: { ...state.actions }
+					})
+			})
+		);
 
-  const actions = {
-    changeColor: (index, color) => {
-      const newDemo = store.demo.map((item, i) => {
-        if (i === index) item.background = color;
-        return item;
-      });
-      setStore({ ...store, demo: newDemo });
-    }
-  };
+		useEffect(() => {
+			/**
+			 * EDIT THIS!
+			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
+			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
+			 * store, instead use actions, like this:
+			 **/
+			state.actions.getMessage(); // <---- calling this function from the flux.js actions
+		}, []);
 
-  useEffect(() => {
-    fetch(`${backendURL}/data`)
-      .then(response => response.json())
-      .then(data => console.log(data)) // Aquí puedes manejar los datos como desees
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
-  return (
-    <Context.Provider value={{ store, actions }}>
-      {children}
-    </Context.Provider>
-  );
+		// The initial value for the context is not null anymore, but the current state of this component,
+		// the context will now have a getStore, getActions and setStore functions available, because they were declared
+		// on the state of this component
+		return (
+			<Context.Provider value={state}>
+				<PassedComponent {...props} />
+			</Context.Provider>
+		);
+	};
+	return StoreWrapper;
 };
 
-export default AppContextProvider;
+export default injectContext;
