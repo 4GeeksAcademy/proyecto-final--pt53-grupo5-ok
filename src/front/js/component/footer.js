@@ -1,11 +1,23 @@
 import React from "react";
-
+import Myimage from "./Myimage.png";
 
 export const Footer = () => (
   <div className="card text-start">
     <div className="card-body">
-      <h5 className="card-title">
-        src= "./"</h5>
+    <img
+  src={Myimage}
+  alt="Our Logo"
+  style={{
+    width: "100px",
+    height: "100px", // Asegura un tamaño cuadrado para que el borde sea circular
+    borderRadius: "100%", // Hace que la imagen sea circular
+    boxShadow: "0 4px 8px rgba(94, 11, 11, 0.1)", // Agrega sombra para un efecto elegante
+    cursor:"pointer",
+    opacity: 0.5,
+    
+  
+  }}
+/>
     </div>
     <div className="card-body text-center">
       <h5 className="card-title">Contacto</h5>
