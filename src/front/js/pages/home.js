@@ -7,20 +7,16 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+		<div className="clearfix mt-5 text-center text-light">
+			<div className="fw-bold ">
+				<h>No Waitlists. 24/7 online therapy. Personalized Care.</h>
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
-		</div>
+        <p>
+         <h1>You Deserve to Feel Better and Be Happy</h1>
+        </p>
+        <p>
+         La depresión puede hacerte sentir aislado, pero estamos aquí para recordarte que siempre hay esperanza y ayuda disponible. Juntos, podemos romper el estigma, fomentar la comprensión y encontrar el camino hacia la sanación.
+        </p>
+       </div>
 	);
 };
