@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Card } from "../component/card";
+import { Post, Feed } from "../component/posteos";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -48,4 +49,5 @@ export const Home = () => {
 	);
 
 };
+
 

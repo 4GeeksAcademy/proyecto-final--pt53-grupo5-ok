@@ -7,6 +7,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Detalles } from "./pages/detalles";
+import { Inicio } from "./pages/inicio";
 import injectContext from "./store/appContext";
 import {FormJoin} from "./pages/FormJoin";
 
@@ -34,6 +35,7 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Detalles />} path="/detalles/:id" />
+                        <Route element={<Inicio />} path="/inicio" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<FormJoin />} path="/join" />
