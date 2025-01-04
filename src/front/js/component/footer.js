@@ -2,7 +2,7 @@ import React from "react";
 import Myimage from "./Myimage.png"; // Asegúrate de que la ruta sea correcta
 
 export const Footer = () => (
-	<div className="bg-light text-dark">
+	<div className="bg-light text-dark fixed bottom mt-5">
 		<div className="container text-center">
 			<div className="d-flex align-items-center justify-content-center">
 				<img

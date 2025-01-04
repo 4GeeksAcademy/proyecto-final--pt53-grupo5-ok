@@ -7,8 +7,8 @@
     justify-content: space-between;
 }
 a:hover{
-    background-color: rgb(0, 0, 0);
-    border-radius: 10px;
+    background-color: rgb(51, 50, 50);
+    border-radius: 20px;
 }
 .dropdown-menu{
     font-size: 15px;
@@ -21,4 +21,14 @@ body{
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     height: 100vh; /* Asegura que el body tenga una altura del 100% de la ventana */
     margin: 0; 
+}
+.guardar{
+    
+    align-items: center;
+}
+.formulario{
+    max-width: 400px;
+    background-color: rgb(149, 149, 143);
+    border-radius: 10px;
+    border: solid 4px rgb(51, 50, 50);
 }
