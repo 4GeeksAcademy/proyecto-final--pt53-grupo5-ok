@@ -12,7 +12,7 @@ a:hover{
     font-size: 15px;
 }
 body{
-    background-color: antiquewhite;
+    background-color: blanchedalmond;
    
 }
 .guardar{
@@ -24,4 +24,47 @@ body{
     background-color: rgb(149, 149, 143);
     border-radius: 10px;
     border: solid 4px rgb(51, 50, 50);
+}
+/* Estilos para los controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  border-radius: 50%; /* Bordes redondeados */
+  border: 2px solid #007bff; /* Borde azul */
+  transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+  width: 40px; /* Ancho del botón */
+  height: 40px; /* Alto del botón */
+}
+
+/* Efecto al hacer hover en los controles */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #007bff; /* Fondo azul al hacer hover */
+  transform: scale(1.1); /* Aumentar ligeramente el tamaño del botón */
+}
+
+/* Estilos para los iconos de control */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Asegúrate de que los iconos sean blancos */
+}
+
+/* Estilos para los indicadores */
+.carousel-indicators button {
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo para los indicadores */
+  border-radius: 50%; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+  width: 10px; /* Ancho de los botones de indicadores */
+  height: 10px; /* Alto de los botones de indicadores */
+}
+
+/* Color de fondo para el indicador activo */
+.carousel-indicators button.active {
+  background-color: #007bff; /* Color azul para el indicador activo */
+}
+
+/* Efecto al hacer hover en los indicadores */
+.carousel-indicators button:hover {
+  background-color: #0056b3; /* Color más oscuro al hacer hover */
+  transform: scale(1.2); /* Aumentar ligeramente el tamaño del indicador al hacer hover */
 }

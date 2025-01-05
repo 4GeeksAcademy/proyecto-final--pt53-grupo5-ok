@@ -3,6 +3,10 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Card } from "../component/card";
 import { Post, Feed } from "../component/posteos";
+import { InfoUsers } from "../component/InfoUsers";
+
+
+
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -36,15 +40,17 @@ export const Home = () => {
 
 	return (
 
-		<div className="container mt-4">
-			<div className="row">
-				{topics.map((topic, index) => (
-					<div className="col-md-4" key={index}>
-						<Card topic={topic} /> {/* Pasamos los datos al componente Card */}
-					</div>
-				))}
-			</div>
-		</div>
+        <div className="container mt-4">
+        <InfoUsers /> {/* Renderizamos InfoUsers una sola vez */}
+        <div className="row">
+          {topics.map((topic, index) => (
+            <div className="col-md-4" key={index}>
+              <Card topic={topic} /> {/* Pasamos los datos al componente Card */}
+            </div>
+          ))}
+        </div>
+      </div>
+
 
 	);
 

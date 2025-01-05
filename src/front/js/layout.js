@@ -11,6 +11,8 @@ import { Inicio } from "./pages/inicio";
 import injectContext from "./store/appContext";
 import {FormJoin} from "./pages/FormJoin";
 import { Professional } from "./pages/Professional";
+import { Support } from "./pages/Support";
+
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -39,6 +41,8 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<FormJoin />} path="/register" />
                         <Route element={<Professional />} path="/professional" />
+                        <Route element={<Support />} path="/Support" />
+               
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
