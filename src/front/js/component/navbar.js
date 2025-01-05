@@ -28,16 +28,7 @@ export const Navbar = () => {
 							<Link className="nav-link active text-light" aria-current="page" to="/register">REGISTRATE</Link>
 						</li>
 						<li className="nav-item dropdown">
-							<a className="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								INICIAR SESION
-							</a>
-							<ul className="dropdown-menu">
-								<li><Link className="dropdown-item" to="/professional">Profesional</Link></li>
-								<li><hr className="dropdown-divider" /></li>
-								<li><Link className="dropdown-item" to="/support">Soporte</Link></li>
-								<li><hr className="dropdown-divider" /></li>
-								<li><Link className="dropdown-item" to="/user">Paciente</Link></li>
-							</ul>
+						<Link className="nav-link active text-light" aria-current="page" to="/login">INICIAR SESION</Link>
 						</li>
 					</ul>
 				</div>

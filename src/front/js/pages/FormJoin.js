@@ -42,7 +42,7 @@ export const FormJoin = () => {
 
         <div className="container formulario bg-secundary mb-3 p-4 w-100">
             <div className="titulo text-dark text-center">
-                <h1 className= "">Registro de Usuario</h1>
+                <h1 className="">Registro de Usuario</h1>
             </div>
             <div className="datos text-dark mb-2">
                 <label className="w-100">Nombre</label>
@@ -55,9 +55,25 @@ export const FormJoin = () => {
                 <input className="w-100" type="text" placeholder="Selecciona tu fecha de Nacimiento" onChange={(e) => setAddress(e.target.value)} value={address}></input>
                 <label className="w-100">Genero</label>
                 <input className="w-100" type="text" placeholder="Selecciona tu genero" onChange={(e) => setName(e.target.value)} value={name}></input>
-                <label className="w-100">Tipo de Usuario</label>
-                <input className="w-100" type="text" placeholder="Selecciona tu tipo de usuario" onChange={(e) => setEmail(e.target.value)} value={email}></input>
-                <label className="w-100">Región</label>
+                <label className="w-100 my-1">Tipo de Usuario</label>
+                <div className="form-check ms-5">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label className="form-check-label" for="flexRadioDefault1">
+                            Profesional
+                        </label>
+                </div>
+                <div className="form-check ms-5">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                        <label className="form-check-label" for="flexRadioDefault2">
+                            Soporte
+                        </label>
+                </div>
+                <div className="form-check ms-5 mb-2">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                        <label className="form-check-label" for="flexRadioDefault2">
+                            Usuario
+                        </label>
+                </div>
                 <input className="w-100" type="text" placeholder="Selecciona tu región" onChange={(e) => setPhone(e.target.value)} value={phone}></input>
                 <label className="w-100">Password</label>
                 <input className="w-100" type="text" placeholder="Ingresa tu Password" onChange={(e) => setAddress(e.target.value)} value={address}></input>
@@ -65,9 +81,9 @@ export const FormJoin = () => {
                 <input className="w-100" type="text" placeholder="Confirma tu Password" onChange={(e) => setAddress(e.target.value)} value={address}></input>
             </div>
             <div className="guardar p-2 d-flex justify-content-end">
-                <Link to="/" className="back me-3">Volver a la pagina principal</Link>
+                <Link to="/" className="back me-3 text-dark">Volver a la pagina principal</Link>
                 <button type="button" className="btn btn-primary save" onClick={() => handleCreateContact()}>Registrar</button>
-                
+
             </div>
         </div>
     )
