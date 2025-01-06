@@ -25,46 +25,103 @@ body{
     border-radius: 10px;
     border: solid 4px rgb(51, 50, 50);
 }
-/* Estilos para los controles del carrusel */
+
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
-  border-radius: 50%; /* Bordes redondeados */
-  border: 2px solid #007bff; /* Borde azul */
-  transition: background-color 0.3s, transform 0.3s; /* Transición suave */
-  width: 40px; /* Ancho del botón */
-  height: 40px; /* Alto del botón */
+  background-color: rgba(255, 255, 255, 0.8); 
+
+  transition: background-color 0.3s, transform 0.3s; 
+  width: 40px;
+  height: 40px; 
 }
 
-/* Efecto al hacer hover en los controles */
+
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background-color: #007bff; /* Fondo azul al hacer hover */
-  transform: scale(1.1); /* Aumentar ligeramente el tamaño del botón */
+  
+  transform: scale(1.1); 
 }
 
-/* Estilos para los iconos de control */
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(1); /* Asegúrate de que los iconos sean blancos */
+  filter: invert(1); 
 }
 
 /* Estilos para los indicadores */
 .carousel-indicators button {
-  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo para los indicadores */
-  border-radius: 50%; /* Bordes redondeados */
-  transition: background-color 0.3s, transform 0.3s; /* Transición suave */
-  width: 10px; /* Ancho de los botones de indicadores */
-  height: 10px; /* Alto de los botones de indicadores */
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 50%; 
+  transition: background-color 0.3s, transform 0.3s;
+  width: 50px; 
+  height: 50px; 
 }
 
-/* Color de fondo para el indicador activo */
+
 .carousel-indicators button.active {
-  background-color: #007bff; /* Color azul para el indicador activo */
+  background-color: #e9ebec; 
 }
 
-/* Efecto al hacer hover en los indicadores */
+
 .carousel-indicators button:hover {
-  background-color: #0056b3; /* Color más oscuro al hacer hover */
-  transform: scale(1.2); /* Aumentar ligeramente el tamaño del indicador al hacer hover */
+  background-color: hsl(0, 0%, 100%); 
+  transform: scale(1.2); 
+
+}
+
+.card {
+  width: 300px; 
+  background-color: #ffffff; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+
+.card img {
+  width: 100%; 
+  height: 200px;
+  object-fit: cover;
+}
+
+
+.card-content {
+  padding: 20px; 
+}
+
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333333; 
+  margin-bottom: 10px; 
+}
+
+
+.card-description {
+  font-size: 1rem;
+  color: #666666; 
+}
+
+.card-button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #6a11cb; 
+  color: #ffffff; 
+  text-decoration: none; 
+  border-radius: 5px; 
+  font-size: 1rem; 
+  text-align: center; 
+  transition: background-color 0.3s ease; 
+}
+
+
+.card-button:hover {
+  background-color: #2575fc; 
 }
