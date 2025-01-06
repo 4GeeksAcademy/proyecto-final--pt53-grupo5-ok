@@ -14,10 +14,10 @@ export const Navbar = () => {
 						  style={{
 							width: "100px",
 							height: "100px",
-							borderRadius: "100%",
-							boxShadow: "0 4px 8px rgba(94, 11, 11, 0.1)",
-							cursor: "pointer",
-							opacity: 0.5,
+							borderRadius: "600%",
+							boxShadow: "0 4px 8px rgba(176, 76, 76, 0.1)",
+							
+							
 						  }}
 						/>
 					</Link>

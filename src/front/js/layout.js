@@ -10,8 +10,8 @@ import { Detalles } from "./pages/detalles";
 import { Inicio } from "./pages/inicio";
 import injectContext from "./store/appContext";
 import {FormJoin} from "./pages/FormJoin";
-import { Login } from "./pages/Login";
 
+import { Login } from "./pages/Login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Card }  from "./component/card";

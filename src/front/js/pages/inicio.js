@@ -4,7 +4,7 @@ import { Feed } from "../component/posteos";  // Importa el Feed desde el compon
 export const Inicio = () => {
     return (
         <div className="container">
-            <h2>Bienvenido al Muro</h2>
+            <h2>hOLAAAA</h2>
             <Feed />  {/* Renderiza el Feed con los posteos */}
         </div>
     );
