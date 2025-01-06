@@ -12,11 +12,9 @@ a:hover{
     font-size: 15px;
 }
 body{
-    background-color: blanchedalmond;
-   
+    background-color: rgb(66, 66, 65);
 }
 .guardar{
-    
     align-items: center;
 }
 .formulario{
@@ -25,6 +23,7 @@ body{
     border-radius: 10px;
     border: solid 4px rgb(51, 50, 50);
 }
+
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -124,4 +123,7 @@ body{
 
 .card-button:hover {
   background-color: #2575fc; 
+  
+.back:hover{
+    background-color: azure;
 }
