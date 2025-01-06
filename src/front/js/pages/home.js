@@ -11,9 +11,9 @@ export const Home = () => {
 		const fetchTopics = async () => {
             try {
                 const urls = [
-                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=540",
-                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=539",
-                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=30604"
+                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=540&Lang=es",
+                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=539&Lang=es",
+                    "https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=30604&Lang=es"
                 ];
 
                 // Hacemos las 3 llamadas a la API simultáneamente

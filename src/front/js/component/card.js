@@ -16,7 +16,6 @@ export const Card = ({ topic }) => {
                 <img src={imageUrl} className="card-img-top" alt="..." style={{ borderTopLeftRadius: "30px", borderTopRightRadius: "30px" }} />
                 <div className="card-body">
                     <h5 className="card-title">{topic.Title}</h5>
-                    <p className="card-text">{topic?.DescriptionText?.substring(0, 100) || "Descripción no disponible"}</p>
                     <button onClick={handleLeerMas} className="btn btn-primary">
                         Leer más
                     </button>
