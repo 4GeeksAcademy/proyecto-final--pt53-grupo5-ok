@@ -7,7 +7,7 @@ export const Detalles = () => {
   
     useEffect(() => {
       
-      fetch(`https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=${id}`)
+      fetch(`https://odphp.health.gov/myhealthfinder/api/v3/topicsearch.json?TopicId=${id}&Lang=es`)
         .then(response => response.json())
         .then(data => {
           
@@ -38,7 +38,7 @@ export const Detalles = () => {
                             {sectionItem.Content && (
                                 <div>
                                     <h5>Contenido:</h5>
-                                    <p>{sectionItem.Content}</p>
+                                    <p dangerouslySetInnerHTML={{__html:sectionItem.Content}}/>
                                 </div>
                             )}
                         </li>
