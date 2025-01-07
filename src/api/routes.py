@@ -7,6 +7,7 @@ from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 import requests 
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -63,7 +64,7 @@ def registro():
     gender = request.json.get("gender")
     type = request.json.get("type")
     region = request.json.get("region")
-    password = request.json.get("password ")
+    password = request.json.get("password")
 
 
     if not email: 
@@ -104,6 +105,35 @@ def registro():
     db.session.commit()
     return jsonify({"mensaje":"registro exitoso, inicie sesion por favor."}), 200
 
+@api.route("/login", methods=["POST"])
+def login():
+    
+    datos = request.json
+    email = datos.get('email')
+    pasword = datos.get('password')
+
+    if not email:
+        return jsonify({"status": "fail", "mesage": "Email is required"}), 422
+    
+    if not password: 
+        return jsonify({"status": "fail", "mesage": "Password is required"}), 422
+    
+    found = User.query.filter_by(email=email). first()
+
+    if not found:
+        return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
+    
+    if not check_password_hash(found.password, password):
+        return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
+    
+    datos = {
+        "id": found.id,
+        "email": found.email,
+    }
+
+    access_token = create_access_token(identy=datos)
+
+    return jsonify({ "status": "success", "message": "login sucessfully", "access_token": access_token, "user": found.serialize()}), 200
 
 
 
