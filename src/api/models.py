@@ -16,6 +16,12 @@ class User(db.Model):
     type = db.Column(db.String(250), nullable=False)
     region = db.Column(db.Integer, db.ForeignKey('region.id'))
     password = db.Column(db.String(250), nullable=False)
+
+    def serialize(self):
+        return {
+            "id":self.id,
+            "email":self.email
+        }
     
 
 class Post(db.Model):

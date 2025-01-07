@@ -58,7 +58,7 @@ def enfermedades4():
 @api.route('/registro', methods=['POST'])
 def registro():
     email = request.json.get("email")
-    firstname = request.json.get("firstaname")
+    firstname = request.json.get("firstname")
     lastname = request.json.get("lastname")
     birthdate = request.json.get("birthdate")
     gender = request.json.get("gender")
@@ -120,21 +120,13 @@ def login():
     
     found = User.query.filter_by(email=email).first()
     
-    if found.password != password:
-        return jsonify({"status": "fail", "message": "password are incorrects"}), 401
-    
     if not found:
         return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
     
     if not check_password_hash(found.password, password):
         return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
-    
-    datos = {
-        "id": found.id,
-        "email": found.email,
-    }
 
-    access_token = create_access_token(identy=datos)
+    access_token = create_access_token(identity=found.id)
 
     return jsonify({ "status": "success", "message": "login sucessfully", "access_token": access_token, "user": found.serialize()}), 200
 
