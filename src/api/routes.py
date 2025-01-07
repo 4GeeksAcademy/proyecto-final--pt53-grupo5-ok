@@ -110,7 +110,7 @@ def login():
     
     datos = request.json
     email = datos.get('email')
-    pasword = datos.get('password')
+    password = datos.get('password')
 
     if not email:
         return jsonify({"status": "fail", "mesage": "Email is required"}), 422
@@ -118,8 +118,11 @@ def login():
     if not password: 
         return jsonify({"status": "fail", "mesage": "Password is required"}), 422
     
-    found = User.query.filter_by(email=email). first()
-
+    found = User.query.filter_by(email=email).first()
+    
+    if found.password != password:
+        return jsonify({"status": "fail", "message": "password are incorrects"}), 401
+    
     if not found:
         return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
     
