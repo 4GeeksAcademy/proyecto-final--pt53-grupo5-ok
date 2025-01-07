@@ -75,8 +75,8 @@ def registro():
         return jsonify({"error":"lastname es requerido"}), 400
     if not birthdate: 
         return jsonify({"error":"birthdate es requerido"}), 400
-    if not gender: 
-        return jsonify({"error":"gender es requerido"}), 400
+    #if not gender: 
+     #   return jsonify({"error":"gender es requerido"}), 400
     if not type: 
         return jsonify({"error":"type es requerido"}), 400
     if not region: 
@@ -87,7 +87,7 @@ def registro():
     
     encontrado = User.query.filter_by(email=email).first()
     if encontrado: 
-        return jsonify({"error":"email es requerido"}), 400
+        return jsonify({"error":"email ya esta registrado"}), 400
     
 
     user = User()
@@ -95,9 +95,9 @@ def registro():
     user.firstname = firstname
     user.lastname = lastname
     user.birthdate = birthdate
-    user.gender = gender
+    #user.gender = gender
     user.type = type
-    user.region = region
+    #user.region = region
     user.password = generate_password_hash(password)
 
 
