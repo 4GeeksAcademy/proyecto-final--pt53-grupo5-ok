@@ -127,3 +127,72 @@ body{
 .back:hover{
     background-color: azure;
 }
+
+.post-card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.feed-container form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.feed-container input[type="text"],
+.feed-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.feed-container textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+.feed-container button[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.feed-container button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.feed-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.like-button {
+  padding: 8px 12px;
+  background-color: #007bff; /* Azul, igual que el botón de "Postear" */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.like-button:hover {
+  background-color: #0056b3;
+}
