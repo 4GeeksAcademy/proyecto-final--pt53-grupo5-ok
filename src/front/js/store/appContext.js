@@ -1,9 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import getState from "./flux.js";
 
 // Don't change, here is where we initialize our context, by default it's just going to be null.
 export const Context = React.createContext(null);
 
+
+export const UserContext = createContext(null);
+
+const UserReducer = (state, action) => {
+	// Dependiendo del type de la acción realiza una tarea distinta
+	switch (action.type) {
+	  case "set":
+		return action.payload
+	  case "add":
+		return [...state, action.payload];
+	  case 'clear':
+		return []
+	  default:
+		return state;
+	}
+  };
+
+  
 // This function injects the global store to any view/component where you want to use it, we will inject the context to layout.js, you can see it here:
 // https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/js/layout.js#L35
 const injectContext = PassedComponent => {
@@ -20,6 +38,25 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
+
+		const handleGetUsers = async () => {
+			try {
+			  const res = await fetch("fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/users")
+			  const data = await res.json()
+			  if (res.ok) contactActions({
+				type: "set",
+				payload: data.users
+		
+			  })
+			  console.log(data)
+			} catch (error) {
+			  console.log(error)
+			}
+		
+		  }
+		  useEffect(() => {
+			handleGetUsers()
+		  }, [])
 
 		useEffect(() => {
 			/**
