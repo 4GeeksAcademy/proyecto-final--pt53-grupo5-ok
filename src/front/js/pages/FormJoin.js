@@ -14,7 +14,7 @@ export const AddUser = () => {
     const [region, setRegion] = useState ("")
     const [password, setPassword] = useState ("")
 
-    const { handleGetUsers } = useContext(UserContext)
+    // const { handleGetUsers } = useContext(UserContext)
 
     const handleCreateUser = () => {
 
@@ -95,7 +95,7 @@ export const AddUser = () => {
                 <label className="w-100">Password</label>
                 <input className="w-100" type="text" placeholder="Ingresa tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <label className="w-100">Confirmar Password</label>
-                <input className="w-100" type="text" placeholder="Confirma tu Password" onChange={(e) => setAddress(e.target.value)} value={address}></input>
+                <input className="w-100" type="text" placeholder="Confirma tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
             </div>
             <div className="guardar p-2 d-flex justify-content-end">
                 <Link to="/" className="back me-3 text-dark">Volver a la pagina principal</Link>
