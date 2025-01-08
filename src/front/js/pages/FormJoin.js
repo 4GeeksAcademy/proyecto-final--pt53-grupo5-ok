@@ -13,10 +13,16 @@ export const AddUser = () => {
     const [type, setType] = useState ("")
     const [region, setRegion] = useState ("")
     const [password, setPassword] = useState ("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
     // const { handleGetUsers } = useContext(UserContext)
 
     const handleCreateUser = () => {
+
+        if (password !== confirmPassword) {
+            alert("las contraseñas no coinciden");
+            return;
+        }
 
         fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/registro", {
             method: "POST",
@@ -29,7 +35,6 @@ export const AddUser = () => {
                 "type": type,
                 "region": region,
                 "password": password
-
             }),
 
             headers: {
@@ -48,9 +53,7 @@ export const AddUser = () => {
         setType("")
         setRegion("")
         setPassword("")
-
-
-
+        setConfirmPassword("")
     }
 
 
@@ -68,24 +71,45 @@ export const AddUser = () => {
                 <label className="w-100">Correo Electrónico</label>
                 <input className="w-100" type="text" placeholder="Ingresa tu correo electrónico" required onChange={(e) => setEmail(e.target.value)} value={email}></input>
                 <label className="w-100">Fecha de Nacimiento</label>
-                <input className="w-100" type="text" placeholder="Selecciona tu fecha de Nacimiento" onChange={(e) => setBirthdate(e.target.value)} value={birthdate}></input>
+                <input className="w-100" type="date" placeholder="Selecciona tu fecha de Nacimiento" onChange={(e) => setBirthdate(e.target.value)} value={birthdate}></input>
                 <label className="w-100">Genero</label>
                 <input className="w-100" type="text" placeholder="Selecciona tu genero" onChange={(e) => setGender(e.target.value)} value={gender}></input>
                 <label className="w-100 my-1">Tipo de Usuario</label>
-                <div className="form-check ms-5" required>
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                <div className="form-check ms-5">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="flexRadioDefault" 
+                        id="flexRadioDefault2"
+                        value="profesional"
+                        onChange={(e) => setType(e.target.value)} 
+                    />
                         <label className="form-check-label" for="flexRadioDefault1">
                             Profesional
                         </label>
                 </div>
                 <div className="form-check ms-5">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="flexRadioDefault" 
+                        id="flexRadioDefault2"
+                        value="soporte"
+                        onChange={(e) => setType(e.target.value)} 
+                    />
                         <label className="form-check-label" for="flexRadioDefault2">
                             Soporte
                         </label>
                 </div>
                 <div className="form-check ms-5 mb-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="flexRadioDefault" 
+                        id="flexRadioDefault2"
+                        value="usuario"
+                        onChange={(e) => setType(e.target.value)} 
+                    />
                         <label className="form-check-label" for="flexRadioDefault2">
                             Usuario
                         </label>
@@ -93,9 +117,9 @@ export const AddUser = () => {
                 <label className="w-100">Región</label>
                 <input className="w-100" type="text" placeholder="Selecciona tu región" onChange={(e) => setRegion(e.target.value)} value={region}></input>
                 <label className="w-100">Password</label>
-                <input className="w-100" type="text" placeholder="Ingresa tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <input className="w-100" type="password" placeholder="Ingresa tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <label className="w-100">Confirmar Password</label>
-                <input className="w-100" type="text" placeholder="Confirma tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <input className="w-100" type="password" placeholder="Confirma tu Password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}></input>
             </div>
             <div className="guardar p-2 d-flex justify-content-end">
                 <Link to="/" className="back me-3 text-dark">Volver a la pagina principal</Link>
