@@ -29,9 +29,9 @@ export const Login = () => {
             </div>
             <div className=" text-center ">
                 <p>
-                    ¿Aún no eres parte de TherapyLink?
+                    ¿Aún no eres parte de Therapy Link?
                 </p>
-                <button type="button" className="btn btn-primary mb-3" to="/register" >Registrate</button>
+                <Link to="/register" className="registerHere mx-auto text-dark mb-4">Registrate aquí</Link>
             </div>
 
 
