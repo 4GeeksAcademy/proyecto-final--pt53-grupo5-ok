@@ -9,7 +9,7 @@ import { Single } from "./pages/single";
 import { Detalles } from "./pages/detalles";
 import { Inicio } from "./pages/inicio";
 import injectContext from "./store/appContext";
-import {FormJoin} from "./pages/FormJoin";
+import {AddUser} from "./pages/FormJoin";
 
 import { Login } from "./pages/Login";
 import { Navbar } from "./component/navbar";
@@ -38,7 +38,7 @@ const Layout = () => {
                         <Route element={<Inicio />} path="/inicio" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<FormJoin />} path="/register" />
+                        <Route element={<AddUser />} path="/register" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
