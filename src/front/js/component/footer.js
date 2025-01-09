@@ -14,18 +14,26 @@ export const Footer = () => (
 						borderRadius: "100%",
 						boxShadow: "0 4px 8px rgba(94, 11, 11, 0.1)",
 						cursor: "pointer",
-						opacity: 0.5,
+						
 					}}
-					className="me-3" // Espaciado derecho para separar el logo del texto
+					className="me-3" 
 				/>
 				<div>
-					<h5>Contacto</h5>
+					<h5><strong>Contacto</strong></h5>
 					<p>
-						<strong>Tel:</strong> 011 4816.1200
+						<strong>Línea Prevención del Suicidio:</strong> * 4141
 						<br />
-						<strong>Tel:</strong> 011 2649.3531
+						<strong>Línea de Prevención del Suicidio y Crisis :</strong> 998
 						<br />
-						<strong>Central de Turnos:</strong> 0800.222.4549
+						<strong>Central de Ayuda  </strong>
+                            <a 
+                                 href="https://988lifeline.org/es/inicio/" 
+                                 target="_blank" 
+                                  rel="noopener noreferrer" 
+                                 className="text-dark text-decoration-none "
+                               >
+                                    ⇢ Si necesitas ayuda ⇠
+                            </a>
 						<br />
 					</p>
 				</div>
