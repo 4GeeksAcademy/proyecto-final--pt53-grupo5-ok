@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Myimage from "./Myimage.png"; // Ajusta la ruta según sea necesario
+import Logo from "./Logo.png";
 
 export const Navbar = () => {
 	return (
@@ -9,7 +9,7 @@ export const Navbar = () => {
 				<div>
 					<Link className="navbar-brand" to="/">
 						<img
-						  src={Myimage}
+						  src={Logo}
 						  alt="Our Logo"
 						  style={{
 							width: "100px",
