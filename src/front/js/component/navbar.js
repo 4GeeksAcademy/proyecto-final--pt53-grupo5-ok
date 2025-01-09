@@ -25,10 +25,10 @@ export const Navbar = () => {
 				<div className="collapse navbar-collapse d-flex justify-content-end menu" id="navbarNavDropdown">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<Link className="nav-link active text-light" aria-current="page" to="/register">REGISTRATE</Link>
+							<Link className="nav-link active text-dark register mx-3" aria-current="page" to="/register"><strong>REGISTRATE</strong></Link>
 						</li>
 						<li className="nav-item dropdown">
-						<Link className="nav-link active text-light" aria-current="page" to="/login">INICIAR SESION</Link>
+						<Link className="nav-link active text-dark login" aria-current="page" to="/login"><strong>INICIAR SESION</strong></Link>
 						</li>
 					</ul>
 				</div>
