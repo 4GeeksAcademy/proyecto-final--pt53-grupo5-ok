@@ -11,6 +11,8 @@ export const Card = ({ topic }) => {
     const imageUrl = topic?.ImageUrl || "https://odphp.health.gov/sites/default/files/2023-03/Screening-tests-talk-to-doc-1267603624.jpg";
 
     return (
+
+        <div className="container d-flex justify-content-between cards-container">
         <div className="container  align-items-stretch ">
             <div className="card" style={{ width: "18rem", borderRadius: "30px" }}>
                 <img src={imageUrl} className="card-img-top" alt="..." style={{ borderTopLeftRadius: "30px", borderTopRightRadius: "30px" }} />
@@ -22,7 +24,7 @@ export const Card = ({ topic }) => {
                 </div>
             </div>
 
-            
+            </div>
         </div>
     );
 
