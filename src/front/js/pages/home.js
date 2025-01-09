@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import { Card } from "../component/card";
 import { Post, Feed } from "../component/posteos";
 import { InfoUsers } from "../component/InfoUsers";
+import { InfoPrincipal } from "../component/InfoPrincipal";
 
 
 
@@ -41,6 +42,7 @@ export const Home = () => {
 	return (
 
         <div className="container mt-4">
+        <InfoPrincipal />
         <InfoUsers /> {/* Renderizamos InfoUsers una sola vez */}
         <div className="row">
           {topics.map((topic, index) => (

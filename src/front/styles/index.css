@@ -12,7 +12,9 @@ a:hover{
     font-size: 15px;
 }
 body{
+  height: 100vh;
   background: linear-gradient(to bottom, #AED0E9, #ffffff);
+  background-attachment: fixed;
 }
 .guardar{
     align-items: center;
@@ -200,4 +202,26 @@ body{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+.register:hover,
+.login:hover{
+  background: linear-gradient(to right, #ff7e5f, #feb47b); 
+}
+.texto1, .texto4, .texto6{
+  color: #5ca0d3;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+ 
+}
+.texto2{
+  color: #5ca0d3;
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+ 
+}
+.span1{
+  color: #5ca0d3;
+  font-weight: bold;
 }
