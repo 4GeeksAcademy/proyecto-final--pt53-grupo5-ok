@@ -12,7 +12,7 @@ a:hover{
     font-size: 15px;
 }
 body{
-    background-color: rgb(239, 239, 198);
+  background: linear-gradient(to bottom, #AED0E9, #ffffff);
 }
 .guardar{
     align-items: center;
@@ -195,4 +195,9 @@ body{
 
 .like-button:hover {
   background-color: #0056b3;
+}
+.register, .login{
+  background-color: #ffeb99;
+  border-radius: 20px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
 }
