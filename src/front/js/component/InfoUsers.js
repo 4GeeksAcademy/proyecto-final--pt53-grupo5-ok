@@ -35,22 +35,13 @@ export const InfoUsers = () => {
               <img src={User} className="d-block w-100" alt="Usuario" />
             </div>
             <div className="col-6 text-start px-4">
-              <h1>¡Bienvenid@ a Therapy Link!</h1>
+              <h1>!Usuarios!</h1>
               <p>
                 Si ya eres usuario, puedes ingresar fácilmente desde la barra
                 superior utilizando tus credenciales. Si todavía no tienes una
                 cuenta, no te preocupes, ¡es muy fácil registrarte! Solo haz
                 clic en “Registrarse” y completa el formulario.
               </p>
-              <h3>¿Qué encontrarás aquí?</h3>
-              <small>
-                • Una interfaz intuitiva y fácil de usar.
-                <br />
-                • Herramientas para agendar citas, encontrar
-                profesionales de salud mental y explorar recursos útiles.
-                <br />
-                • Un espacio seguro y confiable.
-              </small>
             </div>
           </div>
         </div>
