@@ -11,7 +11,7 @@ export const Login = () => {
         e.preventDefault(); // Evita que la página se recargue
 
         try {
-            const response = await fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/login", {
+            const response = await fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

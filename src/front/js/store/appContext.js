@@ -55,7 +55,7 @@ const injectContext = PassedComponent => {
 		
 		  }
 		  useEffect(() => {
-			handleGetUsers()
+		//	handleGetUsers()
 		  }, [])
 
 		useEffect(() => {

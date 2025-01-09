@@ -75,8 +75,8 @@ def registro():
         return jsonify({"error":"lastname es requerido"}), 400
     if not birthdate: 
         return jsonify({"error":"birthdate es requerido"}), 400
-    #if not gender: 
-     #   return jsonify({"error":"gender es requerido"}), 400
+    if not gender: 
+       return jsonify({"error":"gender es requerido"}), 400
     if not type: 
         return jsonify({"error":"type es requerido"}), 400
     if not region: 
