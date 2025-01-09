@@ -26,7 +26,7 @@ export const Login = () => {
                 localStorage.setItem("token", data.token);
 
                 // Redirige a la vista "/home"
-                navigate("/home");
+                navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
                 setError(errorMessage || "Credenciales incorrectas");
