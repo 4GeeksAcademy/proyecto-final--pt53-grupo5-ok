@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../store/appContext";
 
 
@@ -15,7 +15,7 @@ export const AddUser = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    // const { handleGetUsers } = useContext(UserContext)
+    const navigate = useNavigate();
 
     const handleCreateUser = () => {
 
@@ -44,12 +44,19 @@ export const AddUser = () => {
             }
         })
             .then((res) => {
-                if (res.ok) console.log("Usuario agregado correctamente")
+                if (res.ok) {
+                    console.log("Usuario agregado correctamente");
+                    navigate("/login"); // Redirige después de un registro exitoso
+                } else {
+                    return res.json().then((errorData) => {
+                        throw new Error(errorData.message || "Error al registrar usuario");
+                    });
+                }
             })
             .catch((error) => console.warn(error))
 
 
-        //  .then(async () => await handleGetUsers())
+        
         setName("")
         setLastName("")
         setEmail("")
