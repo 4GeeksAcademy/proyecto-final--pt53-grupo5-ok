@@ -9,6 +9,7 @@ import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
+
 api = Blueprint('api', __name__)
 
 # Allow CORS requests to this API
@@ -129,6 +130,11 @@ def login():
     access_token = create_access_token(identity=found.id)
 
     return jsonify({ "status": "success", "message": "login sucessfully", "access_token": access_token, "user": found.serialize()}), 200
+
+@api.route("/inicio")
+@jwt_required()
+def inicio():
+    return jsonify({"mensaje":"esta es la ruta protegida"})
 
 
 
