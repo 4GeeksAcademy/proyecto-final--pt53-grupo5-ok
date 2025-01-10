@@ -11,7 +11,7 @@ export const InfoPrincipal = () => {
                 <h1 className="texto2">THERAPY LINK</h1>
                 <p className="texto3">En Therapy Link, nuestra misión es brindar un espacio seguro y confiable para que encuentres el apoyo necesario en tu camino hacia el bienestar mental. 
                     <br/>
-                    Porque cuidar de tu mente es tan importante como cuidar de tu cuerpo, en Therapy Link estamos aquí para acompañarte en cada paso. 💙
+                    Porque cuidar de tu mente es tan importante como cuidar de tu cuerpo, en Therapy Link estamos aquí para acompañarte en cada paso.
                     <br/>
                     ¡Únete ahora y comienza tu camino hacia una mejor versión de ti!
                     
