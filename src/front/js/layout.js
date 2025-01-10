@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
@@ -9,12 +9,12 @@ import { Single } from "./pages/single";
 import { Detalles } from "./pages/detalles";
 import { Inicio } from "./pages/inicio";
 import injectContext from "./store/appContext";
-import {AddUser} from "./pages/FormJoin";
+import { AddUser } from "./pages/FormJoin";
 
 import { Login } from "./pages/Login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Card }  from "./component/card";
+import { Card } from "./component/card";
 
 
 
@@ -27,6 +27,9 @@ const Layout = () => {
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
+    const token = localStorage.getItem("token");
+
+
     return (
         <div>
             <BrowserRouter basename={basename}>
@@ -34,13 +37,18 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<Detalles />} path="/detalles/:id" />
-                        <Route element={<Inicio />} path="/inicio" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
                         <Route element={<AddUser />} path="/register" />
                         <Route element={<Login />} path="/login" />
-                        <Route element={<h1>Not found!</h1>} />
+                        {
+                            (token && token != "undefined") &&
+                            <>
+                                <Route element={<Detalles />} path="/detalles/:id" />
+                                <Route element={<Inicio />} path="/inicio" />
+                                <Route element={<Demo />} path="/demo" />
+                                <Route element={<Single />} path="/single/:theid" />
+                            </>
+                        }
+                        <Route element={<h1>Not found!</h1>} path="*" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

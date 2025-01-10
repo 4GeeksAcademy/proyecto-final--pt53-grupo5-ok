@@ -21,9 +21,10 @@ export const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data)
 
                 // Almacena el token o información del usuario en el almacenamiento local si es necesario
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.access_token);
 
                 // Redirige a la vista "/home"
                 navigate("/inicio");
@@ -38,7 +39,7 @@ export const Login = () => {
     };
 
     return (
-        
+
         <div className="container formulario bg-secundary mb-3 p-4 w-100">
             <div className="text-center">
                 <h1 className="">¡Bienvenido!</h1>
@@ -49,23 +50,23 @@ export const Login = () => {
                 <div className="datos text-dark mb-2">
 
                     <label className="w-100">Correo Electrónico</label>
-                    <input 
-                    className="form-control w-100" 
-                    type="email" 
-                    placeholder="Ingresa tu correo electrónico" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                    <input
+                        className="form-control w-100"
+                        type="email"
+                        placeholder="Ingresa tu correo electrónico"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
 
                     <label className="w-100">Contraseña</label>
-                    <input 
-                    className="w-100" 
-                    type="password" 
-                    placeholder="Ingresa tu Contraseña"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+                    <input
+                        className="w-100"
+                        type="password"
+                        placeholder="Ingresa tu Contraseña"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
 
                 </div>
