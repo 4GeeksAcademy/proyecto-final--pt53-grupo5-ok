@@ -4,7 +4,7 @@ import Logo from "./Logo.png";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-expand-lg bg-transparent">
+		<nav className="navbar navbar-expand-lg bg-transparent mt-3">
 			<div className="container">
 				<div>
 					<Link className="navbar-brand" to="/">
