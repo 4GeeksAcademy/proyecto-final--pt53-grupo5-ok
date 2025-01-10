@@ -281,6 +281,7 @@ body{
   position: absolute; /* Posición absoluta dentro del contenedor */
   bottom: 10px; /* Espaciado desde el borde inferior */
   right: 10px; /* Espaciado desde el borde derecho */
+  border: none;
 }
 .titulocard{
   color: #5ca0d3;
