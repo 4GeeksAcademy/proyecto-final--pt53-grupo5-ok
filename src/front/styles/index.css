@@ -8,9 +8,6 @@ a:hover{
     background-color: rgb(51, 50, 50);
     border-radius: 20px;
 }
-.dropdown-menu{
-    font-size: 15px;
-}
 body{
   height: 100vh;
   background: linear-gradient(to bottom, #AED0E9, #ffffff);
@@ -29,17 +26,17 @@ body{
 
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: #007bff; 
-  border-radius: 30%;
-
+  background-color: #4d4e50; 
+  
+  opacity: 0.2;
   transition: background-color 0.3s, transform 0.3s; 
-  width: 40px;
-  height: 40px; 
+  width: 20px;
+  height: 80px; 
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: visible;
-  top: 10%;
+  top: 50%;
   transform: translateY(-50%);
   z-index: 5;
 }
@@ -54,7 +51,7 @@ body{
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background-color: #007bff;
+  background-color: #4d4e50;
   
   transform: scale(1.2) translateY(-50%); 
 }
@@ -77,12 +74,14 @@ body{
 .carousel {
   overflow: visible;
   position: relative;
+  background-color: #fff5cc ;
+  border-radius: 30px;
 }
 
 /* Estilos para los indicadores */
 .carousel-indicators button {
   background-color: rgba(13, 15, 13, 0.986); 
-  border-radius: 50%; 
+   
   transition: background-color 0.3s, transform 0.3s;
   margin-bottom: 0px;
   width: 10px; 
@@ -103,7 +102,7 @@ body{
 
 .card {
   width: 300px; 
-  background-color: #ffffff; 
+  background-color: lightgoldenrodyellow ;
   border-radius: 12px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden; 
@@ -229,7 +228,7 @@ body{
 .like-button:hover {
   background-color: #0056b3;
 }
-.register, .login{
+.register, .login, .btnCard{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
@@ -240,7 +239,8 @@ body{
   padding-top: 50px;
 }
 .register:hover,
-.login:hover{
+.login:hover,
+.btnCard:hover{
   background: linear-gradient(to right, #ff7e5f, #feb47b); 
 }
 .texto1, .texto4, .texto6{
@@ -252,7 +252,7 @@ body{
 }
 .texto2{
   color: #5ca0d3;
-  font-size: 60px;
+  font-size: 75px;
   font-weight: bold;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
  
@@ -260,4 +260,23 @@ body{
 .span1{
   color: #5ca0d3;
   font-weight: bold;
+}
+.texto10{
+  color: #5ca0d3;
+}
+.imgcar{
+  width: 650px;
+  height: 547px;
+  object-fit: cover;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.titulocar{
+  color: #5ca0d3;
+  font-weight: bold;
+}
+.btnCard{
+  position: absolute; /* Posición absoluta dentro del contenedor */
+  bottom: 10px; /* Espaciado desde el borde inferior */
+  right: 10px; /* Espaciado desde el borde derecho */
 }

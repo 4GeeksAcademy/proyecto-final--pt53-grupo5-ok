@@ -5,7 +5,7 @@ import apoyo from "./apoyo.png";
 export const InfoPrincipal = () => {
     return (
 
-        <div className="row mb-5">
+        <div className="row mb-5 mt-5">
             <div className="col-6">
                 <h3 className="texto1">BIENVEND@S A:</h3>
                 <h1 className="texto2">THERAPY LINK</h1>

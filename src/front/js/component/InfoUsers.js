@@ -1,7 +1,7 @@
 import React from "react";
-import User from "./User.png"; // Ajusta la ruta según sea necesario
-import Pro from "./Pro.png";
-import Sopo from "./Sopo.png";
+import User from "./User.jpg"; // Ajusta la ruta según sea necesario
+import Pro from "./Pro.jpg";
+import Sopo from "./Sopo.jpg";
 
 export const InfoUsers = () => {
   return (
@@ -32,15 +32,16 @@ export const InfoUsers = () => {
         <div className="carousel-item active" data-bs-interval="10000">
           <div className="d-flex align-items-center">
             <div className="col-6">
-              <img src={User} className="d-block w-100" alt="Usuario" />
+              <img src={User} className="d-block w-100 imgcar" alt="Usuario" />
             </div>
             <div className="col-6 text-start px-4">
-              <h1>!Usuarios!</h1>
+              <h1 className="titulocar">!Usuarios!</h1>
               <p>
-                Si ya eres usuario, puedes ingresar fácilmente desde la barra
-                superior utilizando tus credenciales. Si todavía no tienes una
-                cuenta, no te preocupes, ¡es muy fácil registrarte! Solo haz
-                clic en “Registrarse” y completa el formulario.
+              Si estás lidiando con momentos difíciles, ansiedad, depresión o cualquier desafío relacionado con tu bienestar emocional, aquí encontrarás un espacio seguro y confiable para buscar apoyo. 
+              <br/>
+              Therapy Link está diseñado para ayudarte a conectar con profesionales, personas como tú o quienes ya han pasado por lo que estás viviendo hoy. Esto te ayudará a crear una red de apoyo sin límites y marcar una diferencia en tu vida. No tienes que enfrentarlo solo; estamos aquí para acompañarte en cada paso de tu camino hacia el bienestar.
+              <br/>
+              <strong>Puedes registrarte fácilmente desde la barra superior.</strong>
               </p>
             </div>
           </div>
@@ -48,12 +49,18 @@ export const InfoUsers = () => {
         <div className="carousel-item" data-bs-interval="10000">
           <div className="d-flex align-items-center">
             <div className="col-6">
-              <img src={Pro} className="d-block w-100" alt="Profesional" />
+              <img src={Pro} className="d-block w-100 imgcar" alt="Profesional" />
             </div>
             <div className="col-6 text-start px-4">
-              <h1>¡Registro para Profesionales!</h1>
+              <h1 className="titulocar">¡Registro para Profesionales!</h1>
               <p>
-              Si eres un doctor o psicólogo, puedes registrarte con nosotros y ofrecer tu apoyo a quienes lo necesiten. Únete a nuestra comunidad de profesionales que se dedican a ayudar a otros. Puedes registrarte fácilmente desde la barra superior. ¡Estamos encantados de tenerte a bordo!
+              Si eres médico o psicólogo, puedes registrarte con nosotros y ofrecer tu apoyo a quienes lo necesiten.
+              <br/>
+              Únete a nuestra comunidad de profesionales que se dedican a ayudar a otros. 
+              <br/>
+              Puedes registrarte fácilmente desde la barra superior. 
+              <br/>
+              ¡Estamos encantados de tenerte a bordo!
               </p>
             </div>
           </div>
@@ -61,13 +68,13 @@ export const InfoUsers = () => {
         <div className="carousel-item" data-bs-interval="10000">
           <div className="d-flex align-items-center">
             <div className="col-6">
-              <img src={Sopo} className="d-block w-100" alt="Usuario" />
+              <img src={Sopo} className="d-block w-100 imgcar" alt="Usuario" />
             </div>
             <div className="col-6 text-start px-4">
-              <h1>Red de Apoyo</h1>
+              <h1 className="titulocar">¡Red de Apoyo!</h1>
               <p>
               En Therapy Link, creemos en la importancia de contar con una red de apoyo sólida. Nuestra plataforma está diseñada para conectar a personas que buscan ayuda con profesionales de la salud mental, así como para fomentar un sentido de comunidad entre quienes enfrentan desafíos similares.</p>
-              <small><strong>Puedes registrarte fácilmente desde la barra superior.</strong></small>
+              <strong>Puedes registrarte fácilmente desde la barra superior.</strong>
              
             </div>
           </div>

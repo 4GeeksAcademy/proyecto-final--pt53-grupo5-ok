@@ -41,8 +41,10 @@ export const Home = () => {
 
 	return (
 
-        <div className="container mt-4">
+      <div className="container mt-4">
         <InfoPrincipal />
+        <h4 className="texto10">Para aprovechar al máximo todas las herramientas y beneficios que Therapy Link tiene para tí, elige una de las tres categorías de ingreso que hemos diseñado para adaptarse a tus necesidades. </h4>
+        <h4 className="texto10 mb-5">A continuación, te mostramos las opciones disponibles:</h4>
         <InfoUsers /> {/* Renderizamos InfoUsers una sola vez */}
         <div className="row">
           {topics.map((topic, index) => (
