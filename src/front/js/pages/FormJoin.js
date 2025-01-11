@@ -188,8 +188,8 @@ export const AddUser = () => {
                     />
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/" className="btn btn-outline-secondary">Volver</Link>
-                    <button className="btn btn-primary" onClick={handleCreateUser}>
+                    <Link to="/" className="btn btn-outline-secondary btnVolver text-dark">Volver</Link>
+                    <button className="btn btn-primary btnRegistrar text-dark" onClick={handleCreateUser}>
                         Registrar
                     </button>
                 </div>
