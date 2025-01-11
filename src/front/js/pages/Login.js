@@ -39,11 +39,13 @@ export const Login = () => {
 
     return (
         
-        <div className="container formulario bg-secundary mb-3 p-4 w-100">
-            <div className="text-center">
-                <h1 className="">¡Bienvenido!</h1>
-                <h3>Inicia Sesión</h3>
-            </div>
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="form-container bg-white shadow rounded p-4" style={{ width: "400px" }}>
+                <div className="text-center">
+                    <h1 className="text-primary mb-2">¡Bienvenido!</h1>
+                    <h3 className="mb-4">Inicia Sesión</h3>
+                </div>
+
             <form onSubmit={handleLogin}>
 
                 <div className="datos text-dark mb-2">
@@ -74,6 +76,7 @@ export const Login = () => {
                     Iniciar Sesión
                 </button>
             </form>
+            </div>
         </div>
     )
 
