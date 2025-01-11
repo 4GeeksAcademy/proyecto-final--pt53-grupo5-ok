@@ -71,7 +71,7 @@ export const AddUser = () => {
     return (
         <div className="d-flex justify-content-center align-items-center min-vh-100 py-3">
             <div className="form-container bg-white shadow rounded p-4" style={{ width: "400px" }}>
-                <h1 className="text-center text-primary mb-4">Registro de Usuario</h1>
+                <h1 className="text-center text-primary mb-4 ">Registro de Usuario</h1>
                 <div className="mb-3">
                     <label>Nombre</label>
                     <input
