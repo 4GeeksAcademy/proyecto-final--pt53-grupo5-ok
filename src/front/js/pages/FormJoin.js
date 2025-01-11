@@ -1,57 +1,72 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../store/appContext";
+
 
 export const AddUser = () => {
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthdate, setBirthdate] = useState("");
-    const [gender, setGender] = useState("");
-    const [type, setType] = useState("");
-    const [region, setRegion] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [name, setName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [birthdate, setBirthdate] = useState("")
+    const [gender, setGender] = useState("")
+    const [type, setType] = useState("")
+    const [region, setRegion] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
+    const navigate = useNavigate();
 
     const handleCreateUser = () => {
+
         if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden");
+            alert("las contraseñas no coinciden");
             return;
         }
-
         const data = {
             firstname: name,
             lastname: lastName,
-            email,
-            birthdate,
-            gender,
-            type,
-            region,
-            password,
-        };
-
+            email: email,
+            birthdate: birthdate,
+            gender: gender,
+            type: type,
+            region: region,
+            password: password
+        }
+        console.log(data)
+        
         fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/registro", {
             method: "POST",
             body: JSON.stringify(data),
+
             headers: {
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         })
             .then((res) => {
-                if (res.ok) console.log("Usuario agregado correctamente");
+                if (res.ok) {
+                    console.log("Usuario agregado correctamente");
+                    navigate("/login"); // Redirige después de un registro exitoso
+                } else {
+                    return res.json().then((errorData) => {
+                        throw new Error(errorData.message || "Error al registrar usuario");
+                    });
+                }
             })
-            .catch((error) => console.warn(error));
+            .catch((error) => console.warn(error))
 
-        // Reset form fields
-        setName("");
-        setLastName("");
-        setEmail("");
-        setBirthdate("");
-        setGender("");
-        setType("");
-        setRegion("");
-        setPassword("");
-        setConfirmPassword("");
-    };
+
+        
+        setName("")
+        setLastName("")
+        setEmail("")
+        setBirthdate("")
+        setGender("")
+        setType("")
+        setRegion("")
+        setPassword("")
+        setConfirmPassword("")
+    }
 
     return (
         <div className="d-flex justify-content-center align-items-center min-vh-100 py-3">
