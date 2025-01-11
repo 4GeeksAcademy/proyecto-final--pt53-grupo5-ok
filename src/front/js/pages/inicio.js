@@ -15,16 +15,10 @@ export const Inicio = () => {
 
         fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/inicio", {
             headers: {
-                "Authorization": "Bearer" + token,
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
             }
         })
-            .then(response => {
-                if (response.status === 401 || response.status === 422) {
-                    navigate("/login");
-                }
-                return response.json();
-            })
             .then(data => {
                 console.log("Inicio data:", data);
             })
@@ -34,7 +28,6 @@ export const Inicio = () => {
     useEffect(() => {
         fetchInicio();
     }, []);
-
     return (
         <div className="container">
             <h2 className="title-center">Muro - TherapyLink</h2>
@@ -42,3 +35,4 @@ export const Inicio = () => {
         </div>
     );
 };
+
