@@ -14,9 +14,6 @@ import { AddUser } from "./pages/FormJoin";
 import { Login } from "./pages/Login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Card } from "./component/card";
-
-
 
 
 //create your first component
@@ -39,16 +36,11 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<AddUser />} path="/register" />
                         <Route element={<Login />} path="/login" />
-                        {
-                            (token && token != "undefined") &&
-                            <>
-                                <Route element={<Detalles />} path="/detalles/:id" />
-                                <Route element={<Inicio />} path="/inicio" />
-                                <Route element={<Demo />} path="/demo" />
-                                <Route element={<Single />} path="/single/:theid" />
-                            </>
-                        }
-                        <Route element={<h1>Not found!</h1>} path="*" />
+                        <Route element={<Detalles />} path="/detalles/:id" />
+                        <Route element={<Inicio />} path="/inicio" />
+                        <Route element={<Demo />} path="/demo" />
+                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<h1> Ruta no Encontrada 404!</h1>} path="*" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
