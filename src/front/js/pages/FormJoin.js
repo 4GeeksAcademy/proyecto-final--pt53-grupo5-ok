@@ -68,77 +68,132 @@ export const AddUser = () => {
         setConfirmPassword("")
     }
 
-
     return (
-
-        <div className="container formulario bg-secundary mb-3 p-4 w-100">
-            <div className="titulo text-dark text-center">
-                <h1 className="">Registro de Usuario</h1>
-            </div>
-            <div className="datos text-dark mb-2">
-                <label className="w-100">Nombre</label>
-                <input className="w-100" type="text" placeholder="Ingresa tu nombre" required onChange={(e) => setName(e.target.value)} value={name}></input>
-                <label className="w-100">Apellido</label>
-                <input className="w-100" type="text" placeholder="Ingresa tu apellido" required onChange={(e) => setLastName(e.target.value)} value={lastName}></input>
-                <label className="w-100">Correo Electrónico</label>
-                <input className="w-100" type="text" placeholder="Ingresa tu correo electrónico" required onChange={(e) => setEmail(e.target.value)} value={email}></input>
-                <label className="w-100">Fecha de Nacimiento</label>
-                <input className="w-100" type="date" placeholder="Selecciona tu fecha de Nacimiento" onChange={(e) => setBirthdate(e.target.value)} value={birthdate}></input>
-                <label className="w-100">Genero</label>
-                <input className="w-100" type="text" placeholder="Selecciona tu genero" onChange={(e) => setGender(e.target.value)} value={gender}></input>
-                <label className="w-100 my-1">Tipo de Usuario</label>
-                <div className="form-check ms-5">
+        <div className="d-flex justify-content-center align-items-center min-vh-100 py-3">
+            <div className="form-container bg-white shadow rounded p-4" style={{ width: "400px" }}>
+                <h1 className="text-center text-primary mb-4">Registro de Usuario</h1>
+                <div className="mb-3">
+                    <label>Nombre</label>
                     <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="flexRadioDefault2"
-                        value="profesional"
-                        onChange={(e) => setType(e.target.value)}
+                        type="text"
+                        className="form-control"
+                        placeholder="Ingresa tu nombre"
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
                     />
-                    <label className="form-check-label" for="flexRadioDefault1">
-                        Profesional
-                    </label>
                 </div>
-                <div className="form-check ms-5">
+                <div className="mb-3">
+                    <label>Apellido</label>
                     <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="flexRadioDefault2"
-                        value="soporte"
-                        onChange={(e) => setType(e.target.value)}
+                        type="text"
+                        className="form-control"
+                        placeholder="Ingresa tu apellido"
+                        required
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastName}
                     />
-                    <label className="form-check-label" for="flexRadioDefault2">
-                        Soporte
-                    </label>
                 </div>
-                <div className="form-check ms-5 mb-2">
+                <div className="mb-3">
+                    <label>Correo Electrónico</label>
                     <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="flexRadioDefault2"
-                        value="usuario"
-                        onChange={(e) => setType(e.target.value)}
+                        type="email"
+                        className="form-control"
+                        placeholder="Ingresa tu correo electrónico"
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
                     />
-                    <label className="form-check-label" for="flexRadioDefault2">
-                        Usuario
-                    </label>
                 </div>
-                <label className="w-100">Región</label>
-                <input className="w-100" type="text" placeholder="Selecciona tu región" onChange={(e) => setRegion(e.target.value)} value={region}></input>
-                <label className="w-100">Password</label>
-                <input className="w-100" type="password" placeholder="Ingresa tu Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-                <label className="w-100">Confirmar Password</label>
-                <input className="w-100" type="password" placeholder="Confirma tu Password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}></input>
-            </div>
-            <div className="guardar p-2 d-flex justify-content-end">
-                <Link to="/" className="back me-3 text-dark">Volver a la pagina principal</Link>
-                <button type="button" className="btn btn-primary save" onClick={() => handleCreateUser()}>Registrar</button>
-
+                <div className="mb-3">
+                    <label>Fecha de Nacimiento</label>
+                    <input
+                        type="date"
+                        className="form-control"
+                        onChange={(e) => setBirthdate(e.target.value)}
+                        value={birthdate}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Género</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Selecciona tu género"
+                        onChange={(e) => setGender(e.target.value)}
+                        value={gender}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Tipo de Usuario</label>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="userType"
+                            value="profesional"
+                            onChange={(e) => setType(e.target.value)}
+                        />
+                        <label className="form-check-label">Profesional</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="userType"
+                            value="soporte"
+                            onChange={(e) => setType(e.target.value)}
+                        />
+                        <label className="form-check-label">Soporte</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="userType"
+                            value="usuario"
+                            onChange={(e) => setType(e.target.value)}
+                        />
+                        <label className="form-check-label">Usuario</label>
+                    </div>
+                </div>
+                <div className="mb-3">
+                    <label>Región</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Selecciona tu región"
+                        onChange={(e) => setRegion(e.target.value)}
+                        value={region}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Ingresa tu password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Confirmar Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Confirma tu password"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        value={confirmPassword}
+                    />
+                </div>
+                <div className="d-flex justify-content-between align-items-center">
+                    <Link to="/" className="btn btn-outline-secondary">Volver</Link>
+                    <button className="btn btn-primary" onClick={handleCreateUser}>
+                        Registrar
+                    </button>
+                </div>
             </div>
         </div>
-    )
-}
-
+    );
+};

@@ -35,7 +35,7 @@ export const InfoUsers = () => {
               <img src={User} className="d-block w-100 imgcar" alt="Usuario" />
             </div>
             <div className="col-6 text-start px-4">
-              <h1 className="titulocar">!Usuarios!</h1>
+              <h1 className="titulocar p-top-5">¡Usuarios!</h1>
               <p>
               Si estás lidiando con momentos difíciles, ansiedad, depresión o cualquier desafío relacionado con tu bienestar emocional, aquí encontrarás un espacio seguro y confiable para buscar apoyo. 
               <br/>
