@@ -19,7 +19,7 @@ export const Card = ({ topic }) => {
                     <div className="card-body">
                         <h5 className="card-title titulocard">{topic.Title}</h5>
                         <button onClick={handleLeerMas} className="btn btn-primary btnCard text-dark">
-                            <strong>APRENDE MAS AQUÍ</strong>
+                            Aprende más aquí
                         </button>
                     </div>
                 </div>
