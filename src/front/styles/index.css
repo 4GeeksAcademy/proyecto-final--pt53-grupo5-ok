@@ -225,11 +225,12 @@ body{
 .like-button:hover {
   background-color: #0056b3;
 }
-.register, .login, .btnCard, .btnRegistrar, .btnVolver{
+.register, .login, .btnCard, .btnRegistrar, .btnVolver, .btnLogin{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   border: none;
+  font-weight: bold;
 }
 
 
@@ -240,7 +241,8 @@ body{
 .login:hover,
 .btnCard:hover,
 .btnRegistrar:hover,
-.btnVolver:hover{
+.btnVolver:hover,
+.btnLogin:hover{
   background: linear-gradient(to right, #ff7e5f, #feb47b); 
 }
 .texto1, .texto4, .texto6{
@@ -284,4 +286,15 @@ body{
 .titulocard{
   color: #5ca0d3;
   
+}
+.tituloJoin,
+.tituloLogin,
+.subtLogin{
+  color: #5ca0d3;
+  font-weight: bold;
+  
+}
+.formRegistro, .formLogin{
+  background-color: #d4f2e7;
+  border-radius: 30px;
 }

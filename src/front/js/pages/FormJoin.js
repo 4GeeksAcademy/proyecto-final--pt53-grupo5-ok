@@ -69,9 +69,9 @@ export const AddUser = () => {
     }
 
     return (
-        <div className="d-flex justify-content-center align-items-center min-vh-100 py-3">
-            <div className="form-container bg-white shadow rounded p-4" style={{ width: "400px" }}>
-                <h1 className="text-center text-primary mb-4 ">Registro de Usuario</h1>
+        <div className="d-flex justify-content-center align-items-center min-vh-100 py-3 ">
+            <div className="form-container  shadow  p-4 formRegistro" style={{ width: "400px" }}>
+                <h1 className="text-center mb-4 tituloJoin">Registro de Usuario</h1>
                 <div className="mb-3">
                     <label>Nombre</label>
                     <input
@@ -116,56 +116,47 @@ export const AddUser = () => {
                 </div>
                 <div className="mb-3">
                     <label>Género</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Selecciona tu género"
-                        onChange={(e) => setGender(e.target.value)}
-                        value={gender}
-                    />
+                    <select id="genero" className="w-100 p-2 rounded form-control" name="genero" required onChange={(e) => setGender(e.target.value)}>
+                        <option value="" disbled selected>Selecciona una opción</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Femenino</option>
+                        <option value="ne">Prefieron no especificarlo</option>
+                    
+                    </select>
+                     
                 </div>
                 <div className="mb-3">
                     <label>Tipo de Usuario</label>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="userType"
-                            value="profesional"
-                            onChange={(e) => setType(e.target.value)}
-                        />
-                        <label className="form-check-label">Profesional</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="userType"
-                            value="soporte"
-                            onChange={(e) => setType(e.target.value)}
-                        />
-                        <label className="form-check-label">Soporte</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="userType"
-                            value="usuario"
-                            onChange={(e) => setType(e.target.value)}
-                        />
-                        <label className="form-check-label">Usuario</label>
-                    </div>
+                    <select id="typeUser" className="w-100 p-2 rounded form-control" name="typeUser" required onChange={(e) => setType(e.target.value)}>
+                        <option value="" disbled selected>Selecciona una opción</option>
+                        <option value="profesional">Profesional</option>
+                        <option value="apoyo">Apoyo</option>
+                        <option value="usuario">Usuario</option>
+                    
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label>Región</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Selecciona tu región"
-                        onChange={(e) => setRegion(e.target.value)}
-                        value={region}
-                    />
+                    <select id="region" className="w-100 p-2 rounded form-control" name="region" required onChange={(e) => setRegion(e.target.value)}>
+                        <option value="" disbled selected>Selecciona una opción</option>
+                        <option value="XV">XV Región de Arica y Parinacota</option>
+                        <option value="I">I Región de Tarapacá</option>
+                        <option value="II">II Región de Antofagasta</option>
+                        <option value="III">III Región de Atacama</option>
+                        <option value="IV">IV Región de Coquimbo</option>
+                        <option value="V">V Región de Valaparaíso</option>
+                        <option value="RM">Región Metropolitana</option>
+                        <option value="VI">VI Región del Libertador General Bernardo O’Higgins</option>
+                        <option value="VII">VII Región del Maule</option> 
+                        <option value="XVI">XVI Región de Ñuble</option>
+                        <option value="VIII">VIII Región del Biobío</option>
+                        <option value="IX">IX Región de La Araucanía</option>
+                        <option value="XIV">XIV Región de Los Ríos</option>
+                        <option value="X">X Región de Los Lagos</option>
+                        <option value="XI">XI Región de Aysén del General Carlos Ibáñez del Campo</option>
+                        <option value="XII">XII Región de Magallanes y de la Antártica Chilena</option>
+                    
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label>Password</label>
