@@ -7,7 +7,7 @@ export const Footer = () => (
 		<div className="container" style={{ paddingTop: "10px", paddingBottom: "10px" }}>
 			<div className="row align-items-center">
 				<div className="col-md-4 text-start">
-				<a class="navbar-brand" href="/">
+				<a className="navbar-brand" href="/">
 					<img
 						src={Logo}
 						alt="Our Logo"
