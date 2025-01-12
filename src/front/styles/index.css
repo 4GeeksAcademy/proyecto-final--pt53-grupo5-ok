@@ -250,7 +250,7 @@ body{
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
  
 }
-.texto2{
+.texto2, .titMuro{
   color: #5ca0d3;
   font-size: 75px;
   font-weight: bold;
@@ -303,4 +303,10 @@ body{
 
 .btn-rs {
   font-size: 30px;
+}
+.wall{
+  color: #ffeb99;
+  font-size: 75px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
 }

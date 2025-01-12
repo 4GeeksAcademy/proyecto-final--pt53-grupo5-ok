@@ -7,7 +7,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg bg-transparent m-3">
 			<div className="container">
 				<div>
-					<a class="navbar-brand" href="/">
+					<a className="navbar-brand" href="/">
 						<img
 							src={Logo}
 							alt="Our Logo"
