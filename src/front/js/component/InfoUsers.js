@@ -1,7 +1,8 @@
 import React from "react";
 import User from "./User.jpg"; // Ajusta la ruta según sea necesario
 import Pro from "./Pro.jpg";
-import Sopo from "./Sopo.jpg";
+import Sopo from "./Sopo.jpg";import { Link } from "react-router-dom";
+
 
 export const InfoUsers = () => {
   return (
@@ -40,9 +41,8 @@ export const InfoUsers = () => {
               Si estás lidiando con momentos difíciles, ansiedad, depresión o cualquier desafío relacionado con tu bienestar emocional, aquí encontrarás un espacio seguro y confiable para buscar apoyo. 
               <br/>
               Therapy Link está diseñado para ayudarte a conectar con profesionales, personas como tú o quienes ya han pasado por lo que estás viviendo hoy. Esto te ayudará a crear una red de apoyo sin límites y marcar una diferencia en tu vida. No tienes que enfrentarlo solo; estamos aquí para acompañarte en cada paso de tu camino hacia el bienestar.
-              <br/>
-              <strong>Puedes registrarte fácilmente desde la barra superior.</strong>
               </p>
+              <Link className="nav-link active text-dark register1 mx-3" aria-current="page" to="/register">Registrate aquí</Link>
             </div>
           </div>
         </div>
@@ -58,10 +58,11 @@ export const InfoUsers = () => {
               <br/>
               Únete a nuestra comunidad de profesionales que se dedican a ayudar a otros. 
               <br/>
-              Puedes registrarte fácilmente desde la barra superior. 
+              Puedes registrarte fácilmente. 
               <br/>
               ¡Estamos encantados de tenerte a bordo!
               </p>
+              <Link className="nav-link active text-dark register1 mx-3" aria-current="page" to="/register">Registrate aquí</Link>
             </div>
           </div>
         </div>
@@ -74,8 +75,8 @@ export const InfoUsers = () => {
               <h1 className="titulocar">¡Red de Apoyo!</h1>
               <p>
               En Therapy Link, creemos en la importancia de contar con una red de apoyo sólida. Nuestra plataforma está diseñada para conectar a personas que buscan ayuda con profesionales de la salud mental, así como para fomentar un sentido de comunidad entre quienes enfrentan desafíos similares.</p>
-              <strong>Puedes registrarte fácilmente desde la barra superior.</strong>
-             
+              
+              <Link className="nav-link active text-dark register1 mx-3" aria-current="page" to="/register">Registrate aquí</Link>
             </div>
           </div>
         </div>
