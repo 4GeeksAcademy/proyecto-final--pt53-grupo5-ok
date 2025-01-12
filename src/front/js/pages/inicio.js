@@ -8,10 +8,10 @@ export const Inicio = () => {
     const fetchInicio = () => {
         const token = localStorage.getItem("token");
 
-        if (!token) {
-            navigate("/login");
-            return;
-        }
+        // if (!token) {
+        //     navigate("/login");
+        //     return;
+        // }
 
         fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/inicio", {
             headers: {
