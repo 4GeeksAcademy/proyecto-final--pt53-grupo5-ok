@@ -12,8 +12,8 @@ export const Post = ({ content, author }) => {
         <div className="card w-100 mb-3">
             <div className="card-body">
                 <h5 className="card-title">{author}</h5>
-                <p className="card-text">{content}</p>
-                <button className="btn btn-primary" onClick={handleLike}>
+                <p className="card-text textolike">{content}</p>
+                <button className="btn btn-like" onClick={handleLike}>
                     👍 Like ({likes})
                 </button>
             </div>
@@ -69,13 +69,13 @@ export const Feed = () => {
                             </div>
                             <div className="mb-3">
                                 <textarea
-                                    className="form-control"
+                                    className="form-control textopost"
                                     placeholder="Escribe algo..."
                                     value={newPost}
                                     onChange={(e) => setNewPost(e.target.value)}
                                 />
                             </div>
-                            <button type="submit" className="btn btn-primary">Postear</button>
+                            <button type="submit" className="btn btn-post">Postear</button>
                         </form>
                     </div>
                 </div>

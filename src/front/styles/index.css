@@ -222,7 +222,7 @@ body{
 .like-button:hover {
   background-color: #0056b3;
 }
-.register, .login, .btnCard, .btnRegistrar, .btnVolver, .btnLogin, .boton-footer{
+.register, .login, .btnCard, .btnRegistrar, .btnVolver, .btnLogin, .boton-footer, .btn-post, .btn-like{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
@@ -236,6 +236,8 @@ body{
 }
 .register:hover,
 .login:hover,
+.btn-post:hover,
+.btn-like:hover,
 .btnCard:hover,
 .btnRegistrar:hover,
 .btnVolver:hover,
@@ -309,4 +311,15 @@ body{
   font-size: 75px;
   font-weight: bold;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-post, .btn-like{
+  position: absolute; /* Posición absoluta dentro del contenedor */
+  bottom: 20px; /* Espaciado desde el borde inferior */
+  right: 20px; /* Espaciado desde el borde derecho */
+  border: none;
+}
+
+.textopost, .textolike {
+  margin-bottom: 60px;
 }
