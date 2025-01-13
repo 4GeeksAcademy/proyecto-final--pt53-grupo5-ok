@@ -34,8 +34,8 @@ export const AddUser = () => {
             password: password
         }
         console.log(data)
-        
-        fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/registro", {
+
+        fetch("https://fictional-space-trout-4jg496gvvg4xfqr99-3001.app.github.dev/api/registro", {
             method: "POST",
             body: JSON.stringify(data),
 
@@ -56,7 +56,7 @@ export const AddUser = () => {
             .catch((error) => console.warn(error))
 
 
-        
+
         setName("")
         setLastName("")
         setEmail("")
@@ -121,9 +121,9 @@ export const AddUser = () => {
                         <option value="m">Masculino</option>
                         <option value="f">Femenino</option>
                         <option value="ne">Prefieron no especificarlo</option>
-                    
+
                     </select>
-                     
+
                 </div>
                 <div className="mb-3">
                     <label>Tipo de Usuario</label>
@@ -132,7 +132,7 @@ export const AddUser = () => {
                         <option value="profesional">Profesional</option>
                         <option value="apoyo">Apoyo</option>
                         <option value="usuario">Usuario</option>
-                    
+
                     </select>
                 </div>
                 <div className="mb-3">
@@ -147,7 +147,7 @@ export const AddUser = () => {
                         <option value="V">V Región de Valaparaíso</option>
                         <option value="RM">Región Metropolitana</option>
                         <option value="VI">VI Región del Libertador General Bernardo O’Higgins</option>
-                        <option value="VII">VII Región del Maule</option> 
+                        <option value="VII">VII Región del Maule</option>
                         <option value="XVI">XVI Región de Ñuble</option>
                         <option value="VIII">VIII Región del Biobío</option>
                         <option value="IX">IX Región de La Araucanía</option>
@@ -155,7 +155,7 @@ export const AddUser = () => {
                         <option value="X">X Región de Los Lagos</option>
                         <option value="XI">XI Región de Aysén del General Carlos Ibáñez del Campo</option>
                         <option value="XII">XII Región de Magallanes y de la Antártica Chilena</option>
-                    
+
                     </select>
                 </div>
                 <div className="mb-3">

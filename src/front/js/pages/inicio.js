@@ -14,7 +14,7 @@ export const Inicio = () => {
             return;
         }
 
-        fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/inicio", {
+        fetch("https://fictional-space-trout-4jg496gvvg4xfqr99-3001.app.github.dev/api/inicio", {
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
