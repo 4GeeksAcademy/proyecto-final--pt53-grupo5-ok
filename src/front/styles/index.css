@@ -225,7 +225,7 @@ body{
 .like-button:hover {
   background-color: #0056b3;
 }
-.register, .login, .btnCard{
+.register, .login, .btnCard, .btn-cs{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
@@ -237,7 +237,8 @@ body{
 }
 .register:hover,
 .login:hover,
-.btnCard:hover{
+.btnCard:hover,
+.btn-cs:hover{
   background: linear-gradient(to right, #ff7e5f, #feb47b); 
 }
 .texto1, .texto4, .texto6{
