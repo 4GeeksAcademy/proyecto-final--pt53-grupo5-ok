@@ -19,15 +19,18 @@ export const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-transparent m-3">
             <div className="container">
                 <div>
-                    <img
-                        src={Logo}
-                        alt="Our Logo"
-                        style={{
-                            width: "100px",
-                            height: "100px",
-                            borderRadius: "600%",
-                        }}
-                    />
+                    <a className="navbar-brand" href="/">
+						<img
+							src={Logo}
+							alt="Our Logo"
+							style={{
+								width: "100px",
+								height: "100px",
+								borderRadius: "600%",
+								boxShadow: "0 4px 8px rgba(94, 11, 11, 0.1)",
+							}}
+						/>
+					</a>
                 </div>
                 <div className="collapse navbar-collapse d-flex justify-content-end menu" id="navbarNavDropdown">
                     <ul className="navbar-nav">

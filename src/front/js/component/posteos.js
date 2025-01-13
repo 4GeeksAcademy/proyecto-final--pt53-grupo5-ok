@@ -9,10 +9,14 @@ export const Post = ({ content, author }) => {
     };
 
     return (
-        <div className="post-card">
-            <h5>{author}</h5>
-            <p>{content}</p>
-            <button className="like-button" onClick={handleLike}>👍 Like ({likes})</button>
+        <div className="card w-100 mb-3">
+            <div className="card-body">
+                <h5 className="card-title">{author}</h5>
+                <p className="card-text textolike">{content}</p>
+                <button className="btn btn-like" onClick={handleLike}>
+                    👍 Like ({likes})
+                </button>
+            </div>
         </div>
     );
 };
@@ -47,29 +51,40 @@ export const Feed = () => {
 
 
     return (
-        <div className="feed-container">
-            {/* Formulario para crear un nuevo post */}
-            <form onSubmit={handlePostSubmit}>
-                <input
-                    type="text"
-                    placeholder="Tu nombre"
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                />
-                <textarea
-                    placeholder="Escribe algo..."
-                    value={newPost}
-                    onChange={(e) => setNewPost(e.target.value)}
-                />
-                <button type="submit">Postear</button>
-            </form>
+        <div className="container mt-5 d-flex justify-content-center"> 
+            <div className="w-100" style={{ maxWidth: "800px"}}> 
+                {/* Formulario para crear un nuevo post, envuelto en una card */}
+                <div className="card w-100 mb-4">
+                    <div className="card-body">
+                        <h5 className="card-title">Crear un nuevo post</h5>
+                        <form onSubmit={handlePostSubmit}>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Tu nombre"
+                                    value={author}
+                                    onChange={(e) => setAuthor(e.target.value)}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <textarea
+                                    className="form-control textopost"
+                                    placeholder="Escribe algo..."
+                                    value={newPost}
+                                    onChange={(e) => setNewPost(e.target.value)}
+                                />
+                            </div>
+                            <button type="submit" className="btn btn-post">Postear</button>
+                        </form>
+                    </div>
+                </div>
 
-            {/* Mostrar los posteos */}
-            {posts.map(post => (
-                <Post key={post.id} content={post.content} author={post.author} />
-            ))}
-        </div>
+                {/* Mostrar los posteos en formato Bootstrap card */}
+                {posts.map(post => (
+                    <Post key={post.id} content={post.content} author={post.author} />
+                ))}
+            </div>
+     </div>
     );
 };
-
-

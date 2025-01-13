@@ -4,10 +4,7 @@
     display: flex;
     justify-content: space-between;
 }
-a:hover{
-    background-color: rgb(51, 50, 50);
-    border-radius: 20px;
-}
+
 body{
   height: 100vh;
   background: linear-gradient(to bottom, #AED0E9, #ffffff);
@@ -225,20 +222,29 @@ body{
 .like-button:hover {
   background-color: #0056b3;
 }
-.register, .login, .btnCard, .btn-cs{
+
+.register, .login, .btnCard, .btnRegistrar, .btnVolver, .btnLogin, .boton-footer, .btn-post, .btn-like, .register1, .btn-cs{
   background-color: #ffeb99;
   border-radius: 20px;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+  border: none;
+  font-weight: bold;
 }
-
-
 .cards-container {
   padding-top: 50px;
 }
 .register:hover,
 .login:hover,
+
+.btn-post:hover,
+.btn-like:hover,
 .btnCard:hover,
-.btn-cs:hover{
+.btnRegistrar:hover,
+.btnVolver:hover,
+.btnLogin:hover,
+.boton-footer:hover,
+.register1:hover,
+ .btn-cs:hover{
   background: linear-gradient(to right, #ff7e5f, #feb47b); 
 }
 .texto1, .texto4, .texto6{
@@ -248,7 +254,7 @@ body{
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
  
 }
-.texto2{
+.texto2, .titMuro{
   color: #5ca0d3;
   font-size: 75px;
   font-weight: bold;
@@ -283,3 +289,45 @@ body{
   color: #5ca0d3;
   
 }
+.tituloJoin,
+.tituloLogin,
+.subtLogin{
+  color: #5ca0d3;
+  font-weight: bold;
+  
+}
+.formRegistro, .formLogin{
+  background-color: #d4f2e7;
+  border-radius: 30px;
+}
+
+.bg-footer {
+  background-color: #e9f9f3;
+}
+
+.btn-rs {
+  font-size: 30px;
+}
+.wall{
+  color: #ffeb99;
+  font-size: 75px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-post, .btn-like{
+  position: absolute; /* Posición absoluta dentro del contenedor */
+  bottom: 20px; /* Espaciado desde el borde inferior */
+  right: 20px; /* Espaciado desde el borde derecho */
+  border: none;
+}
+
+.textopost, .textolike {
+  margin-bottom: 60px;
+}
+.register1{
+  display: inline-block; /* Comportamiento como botón */
+  position: absolute;
+  right: 40px;
+} 
+  

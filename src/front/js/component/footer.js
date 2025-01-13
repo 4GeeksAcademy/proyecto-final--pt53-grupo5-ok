@@ -3,10 +3,11 @@ import Logo from "./Logo.png"; // Asegúrate de que la ruta sea correcta
 import { Link } from "react-router-dom";
 
 export const Footer = () => (
-	<div className="bg-light text-dark mt-5">
-		<div className="container py-4">
+	<div className=" d-flex bg-footer text-dark mt-5">
+		<div className="container" style={{ paddingTop: "10px", paddingBottom: "10px" }}>
 			<div className="row align-items-center">
 				<div className="col-md-4 text-start">
+				<a className="navbar-brand" href="/">
 					<img
 						src={Logo}
 						alt="Our Logo"
@@ -19,6 +20,7 @@ export const Footer = () => (
 						}}
 						className="me-3"
 					/>
+					</a>
 				</div>
 				<div className="col-md-4 text-center">
 					<h5><strong>Contacto</strong></h5>
@@ -28,26 +30,26 @@ export const Footer = () => (
 						<strong>Línea de  Crisis:</strong> 998
 						<br />
 						<strong>Central de Ayuda: </strong>
-						<a 
-	                                 href="https://988lifeline.org/es/inicio/" 
-	                                 target="_blank" 
-	                                  rel="noopener noreferrer" 
-	                                 className="text-primary-emphasis text-decoration-none">
-	                                    <strong>PRESIONA AQUÍ</strong>
-                        </a>
+						<a
+							href="https://988lifeline.org/es/inicio/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="boton-footer btn">
+							PRESIONA AQUÍ
+						</a>
 					</p>
 				</div>
-			</div>
-			<div className="d-flex justify-content-end mt-3">
-				<button className="btn btn-light mx-1" type="button">
-					<i className="fa-brands fa-facebook"></i>
-				</button>
-				<button className="btn btn-light mx-1" type="button">
-					<i className="fa-brands fa-instagram"></i>
-				</button>
-				<button className="btn btn-light mx-1" type="button">
-					<i className="fa-brands fa-tiktok"></i>
-				</button>
+				<div className=" col-md-4 d-flex justify-content-end mt-3">
+					<button className="btn mx-1 btn-rs" type="button">
+						<i className="fa-brands fa-facebook"></i>
+					</button>
+					<button className="btn mx-1 btn-rs" type="button">
+						<i className="fa-brands fa-instagram"></i>
+					</button>
+					<button className="btn mx-1 btn-rs" type="button">
+						<i className="fa-brands fa-tiktok"></i>
+					</button>
+				</div>
 			</div>
 			<div className="text-center mt-3">
 				<p>© Grupo Power 2025.</p>
