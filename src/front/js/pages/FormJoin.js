@@ -35,7 +35,7 @@ export const AddUser = () => {
         }
         console.log(data)
 
-        fetch("https://fictional-space-trout-4jg496gvvg4xfqr99-3001.app.github.dev/api/registro", {
+        fetch("https://congenial-space-parakeet-97qg9g5pj447fpw9-3001.app.github.dev//api/registro", {
             method: "POST",
             body: JSON.stringify(data),
 

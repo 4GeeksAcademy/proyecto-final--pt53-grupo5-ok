@@ -11,7 +11,7 @@ export const Login = () => {
         e.preventDefault(); // Evita que la página se recargue
 
         try {
-            const response = await fetch("https://fictional-space-trout-4jg496gvvg4xfqr99-3001.app.github.dev/api/login", {
+            const response = await fetch("https://congenial-space-parakeet-97qg9g5pj447fpw9-3001.app.github.dev//api/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
