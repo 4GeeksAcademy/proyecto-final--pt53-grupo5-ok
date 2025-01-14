@@ -14,7 +14,7 @@ export const Inicio = () => {
             return;
         }
 
-        fetch("https://congenial-space-parakeet-97qg9g5pj447fpw9-3001.app.github.dev//api/inicio", {
+        fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev//api/inicio", {
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
