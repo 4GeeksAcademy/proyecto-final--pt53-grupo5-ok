@@ -20,7 +20,7 @@ export const AddUser = () => {
     const handleCreateUser = () => {
 
         if (password !== confirmPassword) {
-            alert("las contraseñas no coinciden");
+            alert("Las Contraseñas No Coinciden");
             return;
         }
         const data = {
@@ -44,7 +44,9 @@ export const AddUser = () => {
             }
         })
             .then((res) => {
+                console.log(res);
                 if (res.ok) {
+                    alert("Registro Exitoso");
                     console.log("Usuario agregado correctamente");
                     navigate("/login"); // Redirige después de un registro exitoso
                 } else {
