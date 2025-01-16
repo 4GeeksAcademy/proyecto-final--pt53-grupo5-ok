@@ -29,7 +29,7 @@ export const Login = () => {
                 navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
-                setError(errorMessage || "Credenciales incorrectas");
+                setError(alert("Nombre de Usuario y Contraseña no Coinciden"));
             }
         } catch (err) {
             setError("Ocurrió un error. Inténtalo de nuevo.");

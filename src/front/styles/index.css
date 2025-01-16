@@ -246,6 +246,7 @@ body{
 .register1:hover,
  .btn-cs:hover{
   background: linear-gradient(to right, #ff7e5f, #feb47b); 
+  cursor: pointer;
 }
 .texto1, .texto4, .texto6{
   color: #5ca0d3;

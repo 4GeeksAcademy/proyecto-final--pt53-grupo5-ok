@@ -14,13 +14,29 @@ export const AddUser = () => {
     const [region, setRegion] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [errorMessages, setErrorMessages] = useState([]);
 
     const navigate = useNavigate();
 
     const handleCreateUser = () => {
+        const errors = [];
 
-        if (password !== confirmPassword) {
-            alert("Las Contraseñas No Coinciden");
+        // Validar cada campo
+        if (!name.trim()) errors.push("Nombre");
+        if (!lastName.trim()) errors.push("Apellido");
+        if (!email.trim()) errors.push("Correo Electrónico");
+        if (!birthdate.trim()) errors.push("Fecha de Nacimiento");
+        if (!gender.trim()) errors.push("Género");
+        if (!type.trim()) errors.push("Tipo de Usuario");
+        if (!region.trim()) errors.push("Región");
+        if (!password.trim()) errors.push("Contraseña");
+        if (!confirmPassword.trim()) errors.push("Confirmar Contraseña");
+        if (password && confirmPassword && password !== confirmPassword) {
+            errors.push("Las contraseñas no coinciden");
+        }
+
+        if (errors.length > 0) {
+            setErrorMessages(errors);
             return;
         }
         const data = {
@@ -74,6 +90,17 @@ export const AddUser = () => {
         <div className="d-flex justify-content-center align-items-center  py-3 ">
             <div className="form-container  shadow  p-4 formRegistro" style={{ width: "400px" }}>
                 <h1 className="text-center mb-4 tituloJoin">Registro de Usuario</h1>
+                {/* Mostrar errores si los hay */}
+                {errorMessages.length > 0 && (
+                    <div className="alert alert-danger">
+                        <h5>Por favor completa los siguientes campos:</h5>
+                        <ul>
+                            {errorMessages.map((error, index) => (
+                                <li key={index}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <div className="mb-3">
                     <label>Nombre</label>
                     <input
@@ -112,6 +139,7 @@ export const AddUser = () => {
                     <input
                         type="date"
                         className="form-control"
+                        required
                         onChange={(e) => setBirthdate(e.target.value)}
                         value={birthdate}
                     />
@@ -166,6 +194,7 @@ export const AddUser = () => {
                         type="password"
                         className="form-control"
                         placeholder="Ingresa tu password"
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
@@ -176,6 +205,7 @@ export const AddUser = () => {
                         type="password"
                         className="form-control"
                         placeholder="Confirma tu password"
+                        required
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
                     />
