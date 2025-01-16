@@ -44,7 +44,9 @@ export const Feed = () => {
         if (token) {
             const decoded = decodeJWT(token);
             console.log("Token decodificado:", decoded);
-            return decoded?.name || "Usuario Anónimo"; // El nombre del usuario suele estar en el payload como "name"
+            const firstname = decoded?.firstname || "Usuario";
+            const lastname = decoded?.lastname || "Anónimo";
+            return `${firstname} ${lastname}`; // Retorna el nombre completo
         }
         return "Usuario Anónimo";
     };
