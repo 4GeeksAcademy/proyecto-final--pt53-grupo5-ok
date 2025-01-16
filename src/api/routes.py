@@ -127,7 +127,10 @@ def login():
     if not check_password_hash(found.password, password):
         return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
 
-    access_token = create_access_token(identity=found.id)
+    access_token = create_access_token(identity=found.id, additional_claims={
+        "firstname": found.firstname,
+        "lastname": found.lastname
+    })
 
     return jsonify({ "status": "success", "message": "login sucessfully", "access_token": access_token, "user": found.serialize()}), 200
 

@@ -23,7 +23,7 @@ export const Login = () => {
                 const data = await response.json();
 
                 // Almacena el token o información del usuario en el almacenamiento local si es necesario
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.access_token);
 
                 // Redirige a la vista "/home"
                 navigate("/inicio");
