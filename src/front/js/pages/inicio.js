@@ -12,10 +12,10 @@ export const Inicio = () => {
     const fetchInicio = () => {
         const token = localStorage.getItem("token");
 
-        // if (!token) {
-        //     navigate("/login");
-        //     return;
-        // }
+         if (!token) {
+            navigate("/login");
+             return;
+         }
 
         fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev//api/inicio", {
             headers: {
