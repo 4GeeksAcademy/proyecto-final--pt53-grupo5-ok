@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // Este componente es un solo post
 export const Post = ({ content, author }) => {
     const [likes, setLikes] = useState(0);
+    
 
     const handleLike = () => {
         setLikes(likes + 1);
@@ -74,8 +75,8 @@ export const Feed = () => {
     };
 
     return (
-        <div className="container mt-5 d-flex justify-content-center">
-            <div className="w-100" style={{ maxWidth: "800px" }}>
+        <div className="container mt-5 d-flex justify-content-start">
+            <div className="w-100" >
                 {/* Formulario para crear un nuevo post, ya no pedimos el nombre */}
                 <div className="card w-100 mb-4">
                     <div className="card-body">
