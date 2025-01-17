@@ -1,9 +1,10 @@
 import React from "react";
 
+
 export const ProfesionalesLateral = ({ usuarios }) => {
     // Filtra los usuarios por tipo "Profesional" y limita el resultado a 15
     const profesionales = usuarios
-        .filter((usuario) => usuario.type === "Profesional")
+        .filter((User) => User.type === "Profesional")
         .slice(0, 15);
 
     return (
@@ -14,7 +15,7 @@ export const ProfesionalesLateral = ({ usuarios }) => {
                     {profesionales.length > 0 ? (
                         profesionales.map((profesional) => (
                             <li key={profesional.id} className="list-group-item" style={{ padding: "5px 10px" }}>
-                                <strong>{profesional.nombre}</strong> - {profesional.especialidad}
+                                <strong>{profesional.firstname}</strong> 
                             </li>
                         ))
                     ) : (
