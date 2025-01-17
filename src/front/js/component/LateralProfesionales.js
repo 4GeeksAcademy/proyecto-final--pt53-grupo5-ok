@@ -4,9 +4,9 @@ import React from "react";
 export const ProfesionalesLateral = ({ usuarios }) => {
     // Filtra los usuarios por tipo "Profesional" y limita el resultado a 15
     const profesionales = usuarios
-        .filter((User) => User.type === "Profesional")
+        .filter((User) => User.typeUser === "profesional")
         .slice(0, 15);
-
+        console.log("Usuarios recibidos:", usuarios);
     return (
         <div className="card justify-content-center" style={{ fontSize: "0.8rem", padding: "0px", marginLeft: "30px", width: "100%"  }}>
             <div className="card-body">

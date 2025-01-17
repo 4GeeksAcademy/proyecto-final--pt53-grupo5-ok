@@ -30,6 +30,7 @@ export const Inicio = () => {
                 return response.json();
             })
             .then((data) => {
+                console.log("Datos de la API:", data);
                 setUsuarios(data.usuarios || []); // Asegúrate de que `data.usuarios` es el formato correcto
             })
             .catch(error => console.error("Error fetching inicio data:", error));
