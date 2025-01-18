@@ -23,13 +23,13 @@ export const Login = () => {
                 const data = await response.json();
 
                 // Almacena el token o información del usuario en el almacenamiento local si es necesario
-                localStorage.setItem("token", data.access_token);
+                localStorage.setItem("token", data.token);
 
                 // Redirige a la vista "/home"
                 navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
-                setError(alert("Nombre de Usuario y Contraseña no Coinciden"));
+                setError(errorMessage || "Credenciales incorrectas");
             }
         } catch (err) {
             setError("Ocurrió un error. Inténtalo de nuevo.");
