@@ -2,9 +2,10 @@ import React from "react";
 
 
 export const ProfesionalesLateral = ({ usuarios }) => {
+    console.log("Usuarios recibidos:", usuarios);
     // Filtra los usuarios por tipo "Profesional" y limita el resultado a 15
     const profesionales = usuarios
-        .filter((User) => User.typeUser === "profesional")
+        .filter((User) => User.type === "profesional")
         .slice(0, 15);
         console.log("Usuarios recibidos:", usuarios);
     return (
