@@ -40,6 +40,7 @@ export const Login = () => {
                 // Almacena el token en el almacenamiento local
                 localStorage.setItem("token", data.access_token);
 
+
                 // Decodificar el token para obtener el nombre del usuario
                 const decoded = decodeJWT(data.access_token);
                 const username = `${decoded?.firstname || "Usuario"} ${decoded?.lastname || "Anónimo"}`;
@@ -51,7 +52,7 @@ export const Login = () => {
                 navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
-                setError(alert("Nombre de Usuario y Contraseña no Coinciden"));
+                setError(errorMessage || "Credenciales incorrectas");
             }
         } catch (err) {
             setError("Ocurrió un error. Inténtalo de nuevo.");

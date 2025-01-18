@@ -9,6 +9,7 @@ import { InfoPrincipal } from "../component/InfoPrincipal";
 
 
 
+
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const [topics, setTopics] = useState([]);
