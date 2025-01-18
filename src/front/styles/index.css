@@ -332,3 +332,18 @@ body{
   right: 40px;
 } 
   
+.like-list {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.like-arrow {
+  margin-right: 5px;
+}
+
+.like-users {
+  color: #555;
+  font-size: 14px;
+}

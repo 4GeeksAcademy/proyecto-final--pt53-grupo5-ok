@@ -1,12 +1,44 @@
 import React, { useState, useEffect } from "react";
 
 // Este componente es un solo post
-export const Post = ({ content, author }) => {
+export const Post = ({ content, author, postId }) => {
     const [likes, setLikes] = useState(0);
+    const [likedBy, setLikedBy] = useState([]);
+    const [hasLiked, setHasLiked] = useState(false);  // Estado para verificar si el usuario ya dio like
+
+    useEffect(() => {
+        // Recuperar likes del post desde localStorage
+        const storedLikes = JSON.parse(localStorage.getItem(`likes_${postId}`)) || { count: 0, users: [] };
+        setLikes(storedLikes.count);
+        setLikedBy(storedLikes.users);
+
+        // Verificar si el usuario ya dio like a este post
+        const username = localStorage.getItem("username");
+        if (storedLikes.users.includes(username)) {
+            setHasLiked(true);
+        }
+    }, [postId]);
     
 
     const handleLike = () => {
-        setLikes(likes + 1);
+        const username = localStorage.getItem("username");
+
+        if (!hasLiked) {
+            // Agregar el usuario a la lista de usuarios que dieron like
+            const updatedLikes = {
+                count: likes + 1,
+                users: [...likedBy, username]
+            };
+            // Guardar los likes y los usuarios que dieron like en localStorage
+            localStorage.setItem(`likes_${postId}`, JSON.stringify(updatedLikes));
+
+            // Actualizar el estado
+            setLikes(updatedLikes.count);
+            setLikedBy(updatedLikes.users);
+            setHasLiked(true);  // Marcar que el usuario ya dio like
+        } else {
+            alert("Ya has dado like a este post.");
+        }
     };
 
     return (
@@ -14,9 +46,22 @@ export const Post = ({ content, author }) => {
             <div className="card-body">
                 <h5 className="card-title">{author}</h5>
                 <p className="card-text textolike">{content}</p>
-                <button className="btn btn-like" onClick={handleLike}>
+                
+                {/* Botón de like */}
+                <button className="btn btn-like" onClick={handleLike} disabled={hasLiked}>
                     👍 Like ({likes})
                 </button>
+
+                {/* Pestañita con los usuarios que dieron like */}
+                {likedBy.length > 0 && (
+                    <div className="like-list">
+                        <span className="like-arrow">👉</span> {/* Flecha */}
+                        <span className="like-users">
+                            {likedBy.slice(0, 2).join(", ")} {/* Muestra hasta los 2 primeros usuarios */}
+                            {likedBy.length > 2 && `, y más...`} {/* Si hay más de 2 usuarios, muestra un mensaje */}
+                        </span>
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -86,7 +131,7 @@ export const Feed = () => {
                         <form onSubmit={handlePostSubmit}>
                             <div className="mb-3">
                                 {/* Mostrar el nombre del usuario autenticado */}
-                                <p><strong>Posteando como:</strong> {author}</p>
+                                <p> {author} </p>
                             </div>
                             <div className="mb-3">
                                 <textarea
