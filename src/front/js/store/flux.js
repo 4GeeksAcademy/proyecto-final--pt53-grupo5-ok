@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			listado: null,
 			demo: [
 				{
 					title: "FIRST",
@@ -22,14 +23,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
@@ -46,7 +47,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			getListadoProfesionales: async () => {
+				try {
+					const token = localStorage.getItem("token");
+
+					if (!token) {
+						navigate("/login");
+						return;
+					}
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/listado-profesionales", {
+						method: "GET",
+						headers: {
+							"Authorization": "Bearer " + token,
+							"Content-Type": "application/json"
+						}
+					})
+					const data = await resp.json()
+					console.log(data)
+					setStore({ listado: data.results })
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
 		}
 	};
 };
