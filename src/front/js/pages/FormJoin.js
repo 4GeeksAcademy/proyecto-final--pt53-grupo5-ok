@@ -84,7 +84,7 @@ export const AddUser = () => {
         };
 
         try {
-            const res = await fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/registro", {
+            const res = await fetch(process.env.BACKEND_URL + "/api/registro", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
