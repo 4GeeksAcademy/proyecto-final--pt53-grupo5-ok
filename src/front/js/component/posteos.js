@@ -1,11 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Este componente es un solo post
-export const Post = ({ content, author }) => {
+export const Post = ({ content, author, postId }) => {
     const [likes, setLikes] = useState(0);
+    const [likedBy, setLikedBy] = useState([]);
+    const [hasLiked, setHasLiked] = useState(false);  // Estado para verificar si el usuario ya dio like
+
+    useEffect(() => {
+        // Recuperar likes del post desde localStorage
+        const storedLikes = JSON.parse(localStorage.getItem(`likes_${postId}`)) || { count: 0, users: [] };
+        setLikes(storedLikes.count);
+        setLikedBy(storedLikes.users);
+
+        // Verificar si el usuario ya dio like a este post
+        const username = localStorage.getItem("username");
+        if (storedLikes.users.includes(username)) {
+            setHasLiked(true);
+        }
+    }, [postId]);
+    
 
     const handleLike = () => {
-        setLikes(likes + 1);
+        const username = localStorage.getItem("username");
+
+        if (!hasLiked) {
+            // Agregar el usuario a la lista de usuarios que dieron like
+            const updatedLikes = {
+                count: likes + 1,
+                users: [...likedBy, username]
+            };
+            // Guardar los likes y los usuarios que dieron like en localStorage
+            localStorage.setItem(`likes_${postId}`, JSON.stringify(updatedLikes));
+
+            // Actualizar el estado
+            setLikes(updatedLikes.count);
+            setLikedBy(updatedLikes.users);
+            setHasLiked(true);  // Marcar que el usuario ya dio like
+        } else {
+            alert("Ya has dado like a este post.");
+        }
     };
 
     return (
@@ -13,17 +46,57 @@ export const Post = ({ content, author }) => {
             <div className="card-body">
                 <h5 className="card-title">{author}</h5>
                 <p className="card-text textolike">{content}</p>
-                <button className="btn btn-like" onClick={handleLike}>
+                
+                {/* Botón de like */}
+                <button className="btn btn-like" onClick={handleLike} disabled={hasLiked}>
                     👍 Like ({likes})
                 </button>
+
+                {/* Pestañita con los usuarios que dieron like */}
+                {likedBy.length > 0 && (
+                    <div className="like-list">
+                        <span className="like-arrow">👉</span> {/* Flecha */}
+                        <span className="like-users">
+                            {likedBy.slice(0, 2).join(", ")} {/* Muestra hasta los 2 primeros usuarios */}
+                            {likedBy.length > 2 && `, y más...`} {/* Si hay más de 2 usuarios, muestra un mensaje */}
+                        </span>
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
+// Función para decodificar el token JWT y extraer el payload (donde suele estar la info del usuario)
+const decodeJWT = (token) => {
+    try {
+        const base64Url = token.split('.')[1]; // Extraemos la parte del payload
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    } catch (error) {
+        console.error("Error decodificando el token", error);
+        return null;
+    }
+};
+
 // Este componente es el feed (el muro) que contiene varios posts
 export const Feed = () => {
-    // Aquí estamos simulando posteos que eventualmente vendrían de una base de datos o backend.
+    // Función para obtener el nombre del usuario desde el token JWT almacenado en localStorage
+    const getUserNameFromToken = () => {
+        const token = localStorage.getItem("token"); // Asumiendo que el token se guarda con la clave "token"
+        if (token) {
+            const decoded = decodeJWT(token);
+            console.log("Token decodificado:", decoded);
+            const firstname = decoded?.firstname || "Usuario";
+            const lastname = decoded?.lastname || "Anónimo";
+            return `${firstname} ${lastname}`; // Retorna el nombre completo
+        }
+        return "Usuario Anónimo";
+    };
+
     const [posts, setPosts] = useState([
         { id: 1, content: "Hoy fue un gran día", author: "Juan Pérez" },
         { id: 2, content: "Me encanta programar en React", author: "Ana López" },
@@ -31,41 +104,34 @@ export const Feed = () => {
     ]);
 
     const [newPost, setNewPost] = useState(""); // Estado para el contenido del nuevo post
-    const [author, setAuthor] = useState(""); // Estado para el autor del post
+    const [author, setAuthor] = useState(getUserNameFromToken()); // Usar el nombre del usuario desde el token
 
     // Función para manejar el envío del nuevo post
     const handlePostSubmit = (e) => {
         e.preventDefault();
-        if (newPost.trim() === "" || author.trim() === "") return;
+        if (newPost.trim() === "") return; // Validamos que no esté vacío
 
         const newPostObj = {
             id: posts.length + 1,
             content: newPost,
-            author: author,
+            author: author, // Se usa el nombre del usuario autenticado
         };
 
         setPosts([newPostObj, ...posts]); // Agregamos el nuevo post al inicio de la lista
         setNewPost(""); // Limpiamos el campo de texto
-        setAuthor("");  // Limpiamos el autor
     };
 
-
     return (
-        <div className="container mt-5 d-flex justify-content-center"> 
-            <div className="w-100" style={{ maxWidth: "800px"}}> 
-                {/* Formulario para crear un nuevo post, envuelto en una card */}
+        <div className="container mt-5 d-flex justify-content-start">
+            <div className="w-100" >
+                {/* Formulario para crear un nuevo post, ya no pedimos el nombre */}
                 <div className="card w-100 mb-4">
                     <div className="card-body">
                         <h5 className="card-title">Crear un nuevo post</h5>
                         <form onSubmit={handlePostSubmit}>
                             <div className="mb-3">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Tu nombre"
-                                    value={author}
-                                    onChange={(e) => setAuthor(e.target.value)}
-                                />
+                                {/* Mostrar el nombre del usuario autenticado */}
+                                <p> {author} </p>
                             </div>
                             <div className="mb-3">
                                 <textarea
@@ -85,6 +151,6 @@ export const Feed = () => {
                     <Post key={post.id} content={post.content} author={post.author} />
                 ))}
             </div>
-     </div>
+        </div>
     );
 };

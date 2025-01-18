@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Función para decodificar el token JWT y extraer el nombre del usuario
+const decodeJWT = (token) => {
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    } catch (error) {
+        console.error("Error decodificando el token", error);
+        return null;
+    }
+};
+
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -11,7 +26,7 @@ export const Login = () => {
         e.preventDefault(); // Evita que la página se recargue
 
         try {
-            const response = await fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/login", {
+            const response = await fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev//api/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -22,10 +37,18 @@ export const Login = () => {
             if (response.ok) {
                 const data = await response.json();
 
-                // Almacena el token o información del usuario en el almacenamiento local si es necesario
+                // Almacena el token en el almacenamiento local
                 localStorage.setItem("token", data.access_token);
 
-                // Redirige a la vista "/home"
+
+                // Decodificar el token para obtener el nombre del usuario
+                const decoded = decodeJWT(data.access_token);
+                const username = `${decoded?.firstname || "Usuario"} ${decoded?.lastname || "Anónimo"}`;
+
+                // Almacena el nombre del usuario en localStorage
+                localStorage.setItem("username", username);
+
+                // Redirige a la vista "/inicio"
                 navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
@@ -38,7 +61,6 @@ export const Login = () => {
     };
 
     return (
-        
         <div className="d-flex justify-content-center align-items-center">
             <div className="form-container shadow p-4 formLogin" style={{ width: "400px" }}>
                 <div className="text-center">
@@ -46,38 +68,33 @@ export const Login = () => {
                     <h3 className="mb-4 subtLogin">Inicia Sesión</h3>
                 </div>
 
-            <form onSubmit={handleLogin}>
-
-                <div className="datos text-dark mb-2">
-
-                    <label className="w-100">Correo Electrónico</label>
-                    <input 
-                    className="form-control w-100" 
-                    type="email" 
-                    placeholder="Ingresa tu correo electrónico" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    />
-
-                    <label className="w-100">Contraseña</label>
-                    <input 
-                    className="form-control w-100 mb-3" 
-                    type="password" 
-                    placeholder="Ingresa tu Contraseña"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    />
-
-                </div>
-                {error && <p className="text-danger">{error}</p>}
-                <button type="submit" className="btn btn-primary w-100 btnLogin text-dark">
-                    Iniciar Sesión
-                </button>
-            </form>
+                <form onSubmit={handleLogin}>
+                    <div className="datos text-dark mb-2">
+                        <label className="w-100">Correo Electrónico</label>
+                        <input
+                            className="form-control w-100"
+                            type="email"
+                            placeholder="Ingresa tu correo electrónico"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <label className="w-100">Contraseña</label>
+                        <input
+                            className="form-control w-100 mb-3"
+                            type="password"
+                            placeholder="Ingresa tu Contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    {error && <p className="text-danger">{error}</p>}
+                    <button type="submit" className="btn btn-primary w-100 btnLogin text-dark">
+                        Iniciar Sesión
+                    </button>
+                </form>
             </div>
         </div>
-    )
-
-}
+    );
+};

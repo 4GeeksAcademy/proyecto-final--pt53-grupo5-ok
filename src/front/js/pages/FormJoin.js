@@ -1,28 +1,76 @@
-import React from "react";
-import { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../store/appContext";
-
 
 export const AddUser = () => {
-    const [name, setName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [birthdate, setBirthdate] = useState("")
-    const [gender, setGender] = useState("")
-    const [type, setType] = useState("")
-    const [region, setRegion] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthdate, setBirthdate] = useState("");
+    const [gender, setGender] = useState("");
+    const [type, setType] = useState("");
+    const [region, setRegion] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [errorMessages, setErrorMessages] = useState([]);
+    const [showUploadField, setShowUploadField] = useState(false);
+    const [pdfFile, setPdfFile] = useState(null);
 
     const navigate = useNavigate();
 
-    const handleCreateUser = () => {
+    const handleCreateUser = async () => {
+        const errors = [];
 
-        if (password !== confirmPassword) {
-            alert("las contraseñas no coinciden");
+        // Validar cada campo
+        if (!name.trim()) errors.push("Nombre");
+        if (!lastName.trim()) errors.push("Apellido");
+        if (!email.trim()) errors.push("Correo Electrónico");
+        if (!birthdate.trim()) errors.push("Fecha de Nacimiento");
+        if (!gender.trim()) errors.push("Género");
+        if (!type.trim()) errors.push("Tipo de Usuario");
+        if (!region.trim()) errors.push("Región");
+        if (!password.trim()) errors.push("Contraseña");
+        if (!confirmPassword.trim()) errors.push("Confirmar Contraseña");
+        if (password && confirmPassword && password !== confirmPassword) {
+            errors.push("Las contraseñas no coinciden");
+        }
+
+        if (errors.length > 0) {
+            setErrorMessages(errors);
             return;
         }
+
+        let pdfUrl = null;
+        if (type === "profesional" && pdfFile) {
+            const formData = new FormData();
+            formData.append("file", pdfFile);
+            formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+            formData.append("folder", "profesionales_docs");
+
+            try {
+                console.log("Uploading file to Cloudinary...");
+                const response = await fetch(
+                    `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`,
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                );
+                const data = await response.json();
+                if (response.ok) {
+                    pdfUrl = data.secure_url;
+                    console.log("File uploaded successfully:", pdfUrl);
+                } else {
+                    console.error("Error al subir archivo:", data.error.message);
+                    alert("Error al subir el documento PDF.");
+                    return;
+                }
+            } catch (error) {
+                console.error("Error al subir a Cloudinary:", error);
+                alert("Error inesperado al subir el archivo.");
+                return;
+            }
+        }
+
         const data = {
             firstname: name,
             lastname: lastName,
@@ -31,47 +79,60 @@ export const AddUser = () => {
             gender: gender,
             type: type,
             region: region,
-            password: password
-        }
-        console.log(data)
-        
-        fetch("https://fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/api/registro", {
-            method: "POST",
-            body: JSON.stringify(data),
+            password: password,
+            pdfUrl: pdfUrl // Añade la URL del PDF aquí si es necesario
+        };
 
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then((res) => {
-                if (res.ok) {
-                    console.log("Usuario agregado correctamente");
-                    navigate("/login"); // Redirige después de un registro exitoso
-                } else {
-                    return res.json().then((errorData) => {
-                        throw new Error(errorData.message || "Error al registrar usuario");
-                    });
+        try {
+            const res = await fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/registro", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
                 }
-            })
-            .catch((error) => console.warn(error))
+            });
 
+            if (res.ok) {
+                alert("Registro Exitoso");
+                console.log("Usuario agregado correctamente");
+                navigate("/login"); // Redirige después de un registro exitoso
+            } else {
+                const errorData = await res.json();
+                throw new Error(errorData.message || "Error al registrar usuario");
+            }
+        } catch (error) {
+            console.warn(error);
+        }
 
-        
-        setName("")
-        setLastName("")
-        setEmail("")
-        setBirthdate("")
-        setGender("")
-        setType("")
-        setRegion("")
-        setPassword("")
-        setConfirmPassword("")
-    }
+        // Resetear los campos
+        setName("");
+        setLastName("");
+        setEmail("");
+        setBirthdate("");
+        setGender("");
+        setType("");
+        setRegion("");
+        setPassword("");
+        setConfirmPassword("");
+        setPdfFile(null);
+        setShowUploadField(false);
+        setErrorMessages([]);
+    };
 
     return (
-        <div className="d-flex justify-content-center align-items-center  py-3 ">
-            <div className="form-container  shadow  p-4 formRegistro" style={{ width: "400px" }}>
+        <div className="d-flex justify-content-center align-items-center py-3">
+            <div className="form-container shadow p-4 formRegistro" style={{ width: "400px" }}>
                 <h1 className="text-center mb-4 tituloJoin">Registro de Usuario</h1>
+                {errorMessages.length > 0 && (
+                    <div className="alert alert-danger">
+                        <h5>Por favor completa los siguientes campos:</h5>
+                        <ul>
+                            {errorMessages.map((error, index) => (
+                                <li key={index}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <div className="mb-3">
                     <label>Nombre</label>
                     <input
@@ -110,44 +171,74 @@ export const AddUser = () => {
                     <input
                         type="date"
                         className="form-control"
+                        required
                         onChange={(e) => setBirthdate(e.target.value)}
                         value={birthdate}
                     />
                 </div>
                 <div className="mb-3">
                     <label>Género</label>
-                    <select id="genero" className="w-100 p-2 rounded form-control" name="genero" required onChange={(e) => setGender(e.target.value)}>
-                        <option value="" disbled selected>Selecciona una opción</option>
+                    <select
+                        id="genero"
+                        className="w-100 p-2 rounded form-control"
+                        name="genero"
+                        required
+                        onChange={(e) => setGender(e.target.value)}
+                    >
+                        <option value="" disabled selected>Selecciona una opción</option>
                         <option value="m">Masculino</option>
                         <option value="f">Femenino</option>
-                        <option value="ne">Prefieron no especificarlo</option>
-                    
+                        <option value="ne">Prefiero no especificarlo</option>
                     </select>
-                     
                 </div>
                 <div className="mb-3">
                     <label>Tipo de Usuario</label>
-                    <select id="typeUser" className="w-100 p-2 rounded form-control" name="typeUser" required onChange={(e) => setType(e.target.value)}>
-                        <option value="" disbled selected>Selecciona una opción</option>
+                    <select
+                        id="typeUser"
+                        className="w-100 p-2 rounded form-control"
+                        name="typeUser"
+                        required
+                        onChange={(e) => {
+                            setType(e.target.value);
+                            setShowUploadField(e.target.value === "profesional");
+                        }}
+                    >
+                        <option value="" disabled selected>Selecciona una opción</option>
                         <option value="profesional">Profesional</option>
                         <option value="apoyo">Apoyo</option>
                         <option value="usuario">Usuario</option>
-                    
                     </select>
                 </div>
+                {showUploadField && (
+                    <div className="mb-3">
+                        <label>Subir Documento (PDF)</label>
+                        <input
+                            type="file"
+                            accept="application/pdf"
+                            className="form-control"
+                            onChange={(e) => setPdfFile(e.target.files[0])}
+                        />
+                    </div>
+                )}
                 <div className="mb-3">
                     <label>Región</label>
-                    <select id="region" className="w-100 p-2 rounded form-control" name="region" required onChange={(e) => setRegion(e.target.value)}>
-                        <option value="" disbled selected>Selecciona una opción</option>
+                    <select
+                        id="region"
+                        className="w-100 p-2 rounded form-control"
+                        name="region"
+                        required
+                        onChange={(e) => setRegion(e.target.value)}
+                    >
+                        <option value="" disabled selected>Selecciona una opción</option>
                         <option value="XV">XV Región de Arica y Parinacota</option>
                         <option value="I">I Región de Tarapacá</option>
                         <option value="II">II Región de Antofagasta</option>
                         <option value="III">III Región de Atacama</option>
                         <option value="IV">IV Región de Coquimbo</option>
-                        <option value="V">V Región de Valaparaíso</option>
+                        <option value="V">V Región de Valparaíso</option>
                         <option value="RM">Región Metropolitana</option>
                         <option value="VI">VI Región del Libertador General Bernardo O’Higgins</option>
-                        <option value="VII">VII Región del Maule</option> 
+                        <option value="VII">VII Región del Maule</option>
                         <option value="XVI">XVI Región de Ñuble</option>
                         <option value="VIII">VIII Región del Biobío</option>
                         <option value="IX">IX Región de La Araucanía</option>
@@ -155,25 +246,26 @@ export const AddUser = () => {
                         <option value="X">X Región de Los Lagos</option>
                         <option value="XI">XI Región de Aysén del General Carlos Ibáñez del Campo</option>
                         <option value="XII">XII Región de Magallanes y de la Antártica Chilena</option>
-                    
                     </select>
                 </div>
                 <div className="mb-3">
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input
                         type="password"
                         className="form-control"
                         placeholder="Ingresa tu password"
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
                 </div>
                 <div className="mb-3">
-                    <label>Confirmar Password</label>
+                    <label>Confirmar Contraseña</label>
                     <input
                         type="password"
                         className="form-control"
-                        placeholder="Confirma tu password"
+                        placeholder="Confirma tu Contraseña"
+                        required
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
                     />
