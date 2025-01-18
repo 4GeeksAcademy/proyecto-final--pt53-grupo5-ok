@@ -40,15 +40,21 @@ export const Footer = () => (
 					</p>
 				</div>
 				<div className=" col-md-4 d-flex justify-content-end mt-3">
-					<button className="btn mx-1 btn-rs" type="button">
+                    <a href="https://www.facebook.com/profile.php?id=61571735830469" target="_blank" rel="noopener noreferrer">
+					    <button className="btn mx-1 btn-rs" type="button">
 						<i className="fa-brands fa-facebook"></i>
-					</button>
+					    </button>
+				    </a>
+					<a href="https://www.instagram.com/thera.phylink/" target="_blank" rel="noopener noreferrer">
 					<button className="btn mx-1 btn-rs" type="button">
 						<i className="fa-brands fa-instagram"></i>
 					</button>
-					<button className="btn mx-1 btn-rs" type="button">
-						<i className="fa-brands fa-tiktok"></i>
-					</button>
+					</a>
+					<a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+                        <button className="btn mx-1 btn-rs" type="button">
+                          <i className="fa-brands fa-tiktok"></i>
+                       </button>
+                    </a>
 				</div>
 			</div>
 			<div className="text-center mt-3">
