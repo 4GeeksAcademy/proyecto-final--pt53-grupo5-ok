@@ -139,7 +139,7 @@ def login():
 def inicio():
     return jsonify({"mensaje":"esta es la ruta protegida"})
 
-@api.route("/listado-profesionales")
+@api.route("/listado-profesionales", methods=["GET"] )
 #@jwt_required()
 def listado_profesionales():
     profesionales= User.query.filter_by(type="profesional").all()
