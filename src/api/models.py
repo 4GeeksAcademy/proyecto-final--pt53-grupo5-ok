@@ -23,7 +23,7 @@ class User(db.Model):
             "email":self.email,
             "firstname":self.firstname,
             "lastname":self.lastname,
-            "birthdate":self.birthdate,
+            "birthdate": self.birthdate.strftime("%Y-%m-%d") if self.birthdate else None,
             "gender": self.gender,
             "type": self.type,
             "region":self.region,

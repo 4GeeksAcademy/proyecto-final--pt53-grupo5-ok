@@ -24,14 +24,14 @@ const UserReducer = (state, action) => {
   
 // This function injects the global store to any view/component where you want to use it, we will inject the context to layout.js, you can see it here:
 // https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/js/layout.js#L35
-const injectContext = PassedComponent => {
-	const StoreWrapper = props => {
+const injectContext = (PassedComponent) => {
+	const StoreWrapper = (props) => {
 		//this will be passed as the contenxt value
 		const [state, setState] = useState(
 			getState({
 				getStore: () => state.store,
 				getActions: () => state.actions,
-				setStore: updatedStore =>
+				setStore: (updatedStore) =>
 					setState({
 						store: Object.assign(state.store, updatedStore),
 						actions: { ...state.actions }
@@ -39,24 +39,26 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		const handleGetUsers = async () => {
+		// Acción para obtener usuarios profesionales
+		const getListadoProfesionales = async () => {
 			try {
-			  const res = await fetch("fuzzy-umbrella-qg4xv49r7xg3xqg5-3001.app.github.dev/users")
-			  const data = await res.json()
-			  if (res.ok) contactActions({
-				type: "set",
-				payload: data.users
-		
-			  })
-			  console.log(data)
+				const response = await fetch(
+					"https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/listado-profesionales"
+				);
+				if (!response.ok) throw new Error("Error al obtener los profesionales");
+
+				const data = await response.json();
+				setState((prevState) => ({
+					...prevState,
+					store: {
+						...prevState.store,
+						profesionales: data.results || [], // Guarda los profesionales en el estado global
+					},
+				}));
 			} catch (error) {
-			  console.log(error)
+				console.error("Error fetching profesionales:", error);
 			}
-		
-		  }
-		  useEffect(() => {
-		//	handleGetUsers()
-		  }, [])
+		};
 
 		useEffect(() => {
 			/**
@@ -67,6 +69,11 @@ const injectContext = PassedComponent => {
 			 **/
 			state.actions.getMessage(); // <---- calling this function from the flux.js actions
 		}, []);
+
+		// Agregar la acción al contexto
+		useEffect(() => {
+			state.actions.getListadoProfesionales = getListadoProfesionales;
+		}, [state]);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared

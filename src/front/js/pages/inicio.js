@@ -5,44 +5,30 @@ import { TituloMuro } from "../component/TituloMuro";
 import { ProfesionalesLateral } from "../component/LateralProfesionales";
 import { Context } from "../store/appContext";
 
-
 export const Inicio = () => {
     const navigate = useNavigate();
     const [usuarios, setUsuarios] = useState([]); // Estado para almacenar los usuarios
-    const { store, actions } = useContext(Context)
+    const { store, actions } = useContext(Context);
 
-    const fetchInicio = () => {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-            navigate("/login");
-            return;
-        }
-
-        fetch("https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev//api/inicio", {
-            headers: {
-                "Authorization": "Bearer " + token,
-                "Content-Type": "application/json"
-            }
-        })
-            .then((response) => {
+    useEffect(() => {
+        const fetchUsuarios = async () => {
+            try {
+                const response = await fetch(
+                    "https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/listado-profesionales"
+                );
                 if (!response.ok) {
                     throw new Error("Error al obtener los datos");
                 }
-                return response.json();
-            })
-            .then((data) => {
-                console.log("Datos de la API:", data);
-                setUsuarios(data.usuarios || []); // Asegúrate de que `data.usuarios` es el formato correcto
-            })
-            .catch(error => console.error("Error fetching inicio data:", error));
-    };
+                const data = await response.json();
+                setUsuarios(data.results || []); // Asegúrate de que `data` es un arreglo de objetos
+            } catch (error) {
+                console.error("Error fetching profesionales data:", error);
+            }
+        };
 
-    useEffect(() => {
-        fetchInicio();
-        actions.getListadoProfesionales()
+        fetchUsuarios();
+        actions.getListadoProfesionales();
     }, []);
-
 
     return (
         <div className="container">
@@ -55,10 +41,9 @@ export const Inicio = () => {
 
                 {/* Sección lateral con los profesionales */}
                 <div className="col-lg-2 col-md-4 col-sm-12">
-                    <ProfesionalesLateral usuarios={usuarios} />
+                    <ProfesionalesLateral usuarios={store.profesionales}/>
                 </div>
             </div>
         </div>
     );
 };
-
