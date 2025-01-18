@@ -58,7 +58,7 @@ export const AddUser = () => {
                 const data = await response.json();
                 if (response.ok) {
                     pdfUrl = data.secure_url;
-                    console.log("File uploaded successfully:", pdfUrl);
+                    console.log("Tu archivo se subio exitosamente", pdfUrl);
                 } else {
                     console.error("Error al subir archivo:", data.error.message);
                     alert("Error al subir el documento PDF.");
