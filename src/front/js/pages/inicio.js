@@ -11,10 +11,23 @@ export const Inicio = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
+// los cambios van desde aqui... líneas 14 a 44
+        const token = localStorage.getItem("token"); // O sessionStorage.getItem("authToken")
+        if (!token) {
+          // Si no hay token, redirige al login
+          navigate("/login");
+          return;
+        }
+        
         const fetchUsuarios = async () => {
             try {
                 const response = await fetch(
-                    "https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/listado-profesionales"
+                    "https://psychic-space-goldfish-wr9qr6v7xp7p2ggxg-3001.app.github.dev/api/listado-profesionales", {
+                        headers: {
+                            "Authorization": `Bearer ${token}`, // Incluye el token en las cabeceras de la petición
+                            "Content-Type": "application/json"
+                        },
+                    }
                 );
                 if (!response.ok) {
                     throw new Error("Error al obtener los datos");
@@ -26,10 +39,11 @@ export const Inicio = () => {
             }
         };
 
+
         fetchUsuarios();
         actions.getListadoProfesionales();
-    }, []);
-
+    }, [navigate, actions]);
+// ... hasta aquí.
     return (
         <div className="container">
             <div className="row">
