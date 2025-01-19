@@ -7,37 +7,38 @@ export const Post = ({ content, author, postId }) => {
     const [hasLiked, setHasLiked] = useState(false);  // Estado para verificar si el usuario ya dio like
 
     useEffect(() => {
-        // Recuperar likes del post desde localStorage
+        // Recuperar likes específicos de este post desde localStorage
         const storedLikes = JSON.parse(localStorage.getItem(`likes_${postId}`)) || { count: 0, users: [] };
         setLikes(storedLikes.count);
         setLikedBy(storedLikes.users);
 
-        // Verificar si el usuario ya dio like a este post
+        // Verificar si el usuario ya dio like a este post específico
         const username = localStorage.getItem("username");
-        if (storedLikes.users.includes(username)) {
-            setHasLiked(true);
+        if (username && storedLikes.users.includes(username)) {
+            setHasLiked(true); // Solo se marca como "hasLiked" si el usuario dio like a este post
         }
     }, [postId]);
-    
 
     const handleLike = () => {
         const username = localStorage.getItem("username");
 
-        if (!hasLiked) {
-            // Agregar el usuario a la lista de usuarios que dieron like
+        if (!hasLiked && username) {
+            // Agregar el usuario a la lista de usuarios que dieron like para este post específico
             const updatedLikes = {
                 count: likes + 1,
                 users: [...likedBy, username]
             };
-            // Guardar los likes y los usuarios que dieron like en localStorage
+            // Guardar los likes específicos de este post en localStorage
             localStorage.setItem(`likes_${postId}`, JSON.stringify(updatedLikes));
 
-            // Actualizar el estado
+            // Actualizar el estado solo para este post
             setLikes(updatedLikes.count);
             setLikedBy(updatedLikes.users);
-            setHasLiked(true);  // Marcar que el usuario ya dio like
-        } else {
+            setHasLiked(true);  // Marcar que el usuario ya dio like a este post específico
+        } else if (hasLiked) {
             alert("Ya has dado like a este post.");
+        } else {
+            alert("No se pudo verificar tu usuario.");
         }
     };
 
@@ -48,7 +49,11 @@ export const Post = ({ content, author, postId }) => {
                 <p className="card-text textolike">{content}</p>
                 
                 {/* Botón de like */}
-                <button className="btn btn-like" onClick={handleLike} disabled={hasLiked}>
+                <button 
+                    className="btn btn-like" 
+                    onClick={handleLike} 
+                    disabled={hasLiked}  // Desactivar solo si el usuario ya dio like a este post
+                >
                     👍 Like ({likes})
                 </button>
 
@@ -148,7 +153,7 @@ export const Feed = () => {
 
                 {/* Mostrar los posteos en formato Bootstrap card */}
                 {posts.map(post => (
-                    <Post key={post.id} content={post.content} author={post.author} />
+                    <Post key={post.id} content={post.content} author={post.author} postId={post.id} />
                 ))}
             </div>
         </div>
