@@ -122,10 +122,10 @@ def login():
     found = User.query.filter_by(email=email).first()
     
     if not found:
-        return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
+        return jsonify({"status": "fail", "message": "Usuario No Registrado"}), 404
     
     if not check_password_hash(found.password, password):
-        return jsonify({"status": "fail", "message": "Credentials are incorrects"}), 401
+        return jsonify({"status": "fail", "message": "CREDENCIALES INCORRECTAS"}), 401
 
     access_token = create_access_token(identity=found.id, additional_claims={
         "firstname": found.firstname,

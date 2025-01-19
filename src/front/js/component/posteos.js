@@ -47,11 +47,11 @@ export const Post = ({ content, author, postId }) => {
             <div className="card-body">
                 <h5 className="card-title">{author}</h5>
                 <p className="card-text textolike">{content}</p>
-                
+
                 {/* Botón de like */}
-                <button 
-                    className="btn btn-like" 
-                    onClick={handleLike} 
+                <button
+                    className="btn btn-like"
+                    onClick={handleLike}
                     disabled={hasLiked}  // Desactivar solo si el usuario ya dio like a este post
                 >
                     👍 Like ({likes})
@@ -77,7 +77,7 @@ const decodeJWT = (token) => {
     try {
         const base64Url = token.split('.')[1]; // Extraemos la parte del payload
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         return JSON.parse(jsonPayload);
@@ -124,6 +124,8 @@ export const Feed = () => {
 
         setPosts([newPostObj, ...posts]); // Agregamos el nuevo post al inicio de la lista
         setNewPost(""); // Limpiamos el campo de texto
+
+        alert("¡Posteo Realizado de Manera Exitosa!");
     };
 
     return (

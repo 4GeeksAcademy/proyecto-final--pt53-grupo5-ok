@@ -52,7 +52,16 @@ export const Login = () => {
                 navigate("/inicio");
             } else {
                 const errorMessage = await response.text();
-                setError(errorMessage || "Credenciales incorrectas");
+                    setError(errorMessage || "Credenciales incorrectas");
+                if (response.status === 404) {
+                    // Si es un 404, significa que el usuario no está registrado
+                    setError("Usuario no registrado");
+                    alert("Usuario No Registrado"); // Alerta cuando el correo no está en la base de datos
+                } else {
+                    // Para otros errores, como credenciales incorrectas
+                    setError(errorMessage || "Credenciales incorrectas");
+                    alert("Correo Electrónico y Contraseña No Coinciden.");
+                }
             }
         } catch (err) {
             setError("Ocurrió un error. Inténtalo de nuevo.");
