@@ -13,10 +13,10 @@ export const InfoPrincipal = () => {
                     <br/>
                     Porque cuidar de tu mente es tan importante como cuidar de tu cuerpo, en Therapy Link estamos aquí para acompañarte en cada paso.
                     <br/>
-                    ¡Únete ahora y comienza tu camino hacia una mejor versión de ti!
+                    ¡Únete ahora y comienza tu camino hacia una mejor versión de ti!</p>
                     
-                    <h3 className="texto6 my-3">AQUÍ PODRÁS: </h3>
-                    
+                <h3 className="texto6 my-3">AQUÍ PODRÁS: </h3>
+                    <p>
                     • Informarte sobre temas como la depresión, ansiedad y otros aspectos importantes de la salud mental.
                     <br/>
                     • Contactar líneas de ayuda y especialistas para obtener orientación personalizada.

@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 
 export const ProfesionalesLateral = ({ usuarios = [] }) => {
-  console.log("Usuarios recibidos:", usuarios);
+  const [profesionales, setProfesionales] = useState([]);
 
-  // Filtra los usuarios por tipo "Profesional" y limita el resultado a 15
-  const profesionales = usuarios
-    .filter((user) => user.type === "profesional")
-    .slice(0, 15);
+  const guardarEnLocalStorage = (profesionales) => {
+    localStorage.setItem("profesionales", JSON.stringify(profesionales));
+  };
+
+  // Cargar profesionales desde localStorage al montar el componente
+  useEffect(() => {
+    const datosGuardados = localStorage.getItem("profesionales");
+    if (datosGuardados) {
+      setProfesionales(JSON.parse(datosGuardados));
+    } else if (usuarios.length > 0) {
+      // Filtramos y guardamos en caso de que usuarios no esté vacío
+      const profesionalesFiltrados = usuarios
+        .filter((user) => user.type === "profesional")
+        .slice(0, 15);
+
+      setProfesionales(profesionalesFiltrados);
+      guardarEnLocalStorage(profesionalesFiltrados);
+    }
+    // Dependencia vacía para que esto se ejecute solo al montar
+  }, []);
+
 
   return (
     <div
